@@ -1,7 +1,6 @@
 package com.itg.jobcardmanagement.intro;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,7 +10,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -20,8 +18,7 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.itg.jobcardmanagement.LoginActivity;
-import com.itg.jobcardmanagement.MainActivity;
+import com.itg.jobcardmanagement.registration.LoginActivity;
 import com.itg.jobcardmanagement.R;
 import com.itg.jobcardmanagement.common.Logger;
 import com.itg.jobcardmanagement.common.Prefs;

@@ -44,4 +44,9 @@
         <item>@color/dot_dark_screen3</item>
         <item>@color/dot_dark_screen4</item>
     </array>
+
+    <!---TextView-->
+    <color name="colorBlack">#000</color>
+    <color name="colorRed">#480a07</color>
+    <color name="colorGray">#afaeae</color>
 </resources>
