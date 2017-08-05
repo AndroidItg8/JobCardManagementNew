@@ -30,8 +30,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name=".registration.LoginActivity"
             android:label="@string/title_activity_login"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".registration.CustomerRegistrationActivity"
+            android:label="@string/title_activity_customer_registration"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
