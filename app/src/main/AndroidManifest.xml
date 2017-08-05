@@ -36,6 +36,10 @@
         <activity
             android:name=".registration.CustomerRegistrationActivity"
             android:label="@string/title_activity_customer_registration"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".registration.PasswordActivity"
+            android:label="@string/title_activity_password"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
