@@ -49,4 +49,6 @@
     <color name="colorBlack">#000</color>
     <color name="colorRed">#480a07</color>
     <color name="colorGray">#afaeae</color>
+    <color name="colorTransparent">#00cecece</color>
+
 </resources>

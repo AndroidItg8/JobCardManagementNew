@@ -6,94 +6,235 @@
     android:layout_height="match_parent"
     tools:context="com.itg.jobcardmanagement.registration.CustomerRegistrationActivity">
 
+
     <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/transparent">
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+        android:background="@color/colorPrimary">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/toolbar_layout"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@android:color/transparent"
-            android:visibility="visible"
-            app:popupTheme="@style/MyTheme" >
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="enterAlwaysCollapsed|scroll"
+            app:titleEnabled="false">
 
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:visibility="visible"
+                app:popupTheme="@style/AppTheme.NoActionBar">
 
-            <TextView
-                android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/lbl_skip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="skip"
+                    android:visibility="gone"
+                    android:textColor="@color/colorRed"
+                    android:textSize="@dimen/textViewSize"
+                    android:textStyle="bold" />
+            </android.support.v7.widget.Toolbar>
+            <FrameLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:layout_marginStart="10dp"
-                android:text="skip"
-                android:textSize="@dimen/textViewSize"
-                android:textStyle="bold"
-                android:textColor="@color/colorRed"
-                android:layout_marginLeft="10dp" />
+                app:layout_collapseMode="parallax">
 
-
-        </android.support.v7.widget.Toolbar>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/lbl_car"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:text="Add Your Car"
-                android:layout_centerHorizontal="true"
-                android:textSize="18dp" />
-            <android.support.design.widget.TextInputLayout
-                android:layout_below="@+id/lbl_car"
+            <RelativeLayout
+                android:id="@+id/rl_registration"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="20dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginBottom="10dp"
-                app:errorTextAppearance="@color/colorRed"
-                app:hintTextAppearance="@color/colorPrimary"
-                android:textColorHint="@color/colorGray"
-                android:id="@+id/input_car_reg_no">
+                android:visibility="visible">
 
-                <android.support.design.widget.TextInputEditText
+                <TextView
+                    android:id="@+id/lbl_car"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="Add Your Car"
+                    android:textColor="@color/white"
+                    android:textSize="18dp" />
+
+
+                <EditText
+                    android:id="@+id/edt_registration"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/lbl_car"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginStart="20dp"
+                    android:focusable="false"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/bg_edittext"
+                    android:drawablePadding="08dp"
+                    android:gravity="start|center_vertical"
+                    android:hint="XX-00-XX-0000"
+                    android:inputType="text"
+                    android:lines="2"
+                    android:maxLines="2"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textSize="@dimen/textViewSize">
+
+                </EditText>
+
+                <TextView
+                    android:id="@+id/lbl_registration"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:hint="@string/regis_no" />
-            </android.support.design.widget.TextInputLayout>
-            <android.support.design.widget.TextInputLayout
-                android:layout_below="@+id/input_car_reg_no"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/input_thesis">
+                    android:layout_alignLeft="@+id/edt_registration"
+                    android:layout_alignStart="@+id/edt_registration"
+                    android:layout_below="@+id/edt_registration"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginStart="30dp"
+                    android:drawableEnd="@drawable/ic_edit_black_24dp"
+                    android:drawablePadding="10dp"
+                    android:drawableRight="@drawable/ic_edit_black_24dp"
+                    android:gravity="start|center_vertical"
+                    android:text="@string/regis_no"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/colorGray"
+                    android:textSize="13sp" />
 
-                <android.support.design.widget.TextInputEditText
+                <EditText
+                    android:id="@+id/edt_thesis"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/lbl_registration"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginStart="20dp"
+                    android:focusable="false"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/bg_edittext"
+                    android:drawablePadding="08dp"
+                    android:gravity="start"
+                    android:inputType="text"
+                    android:lines="2"
+                    android:maxLines="2"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textSize="@dimen/textViewSize">
+
+                </EditText>
+
+                <TextView
+                    android:id="@+id/lbl_thesis"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    style="@style/TextViewStyle"
-                    android:inputType="text"
-                    app:theme="@style/TextViewStyle"
-                    android:hint="@string/thesis_no" />
-            </android.support.design.widget.TextInputLayout>
+                    android:layout_alignLeft="@+id/edt_registration"
+                    android:layout_alignStart="@+id/edt_registration"
+                    android:layout_below="@+id/edt_thesis"
+                    android:layout_marginBottom="30dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginStart="30dp"
+                    android:drawableEnd="@drawable/ic_edit_black_24dp"
+                    android:drawablePadding="10dp"
+                    android:drawableRight="@drawable/ic_edit_black_24dp"
+                    android:gravity="start|center_vertical"
+                    android:text="@string/regis_no"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/colorGray"
+                    android:textSize="13sp" />
 
+            </RelativeLayout>
 
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:id="@+id/rl_filled_registration"
+                    android:layout_margin="30dp">
+                    <TextView
+                        android:id="@+id/txt_registration"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginStart="40dp"
+                        android:drawableEnd="@drawable/ic_edit_black_24dp"
+                        android:drawablePadding="10dp"
+                        android:drawableRight="@drawable/ic_edit_black_24dp"
+                        android:gravity="start|center_vertical"
+                        android:text="@string/regis_no"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/colorGray"
+                        android:textSize="13sp" />
 
+                    <TextView
+                        android:layout_below="@+id/txt_registration"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginTop="10dp"
+                        android:drawableEnd="@drawable/ic_edit_black_24dp"
+                        android:drawablePadding="10dp"
+                        android:drawableRight="@drawable/ic_edit_black_24dp"
+                        android:gravity="start|center_vertical"
+                        android:text="@string/regis_no"
+                        android:textColor="@color/white"
+                        android:id="@+id/txt_thesis"
+                        android:textColorHint="@color/colorGray"
+                        android:textSize="13sp" />
+                </RelativeLayout>
+            </FrameLayout>
 
-        </RelativeLayout>
+        </android.support.design.widget.CollapsingToolbarLayout>
 
     </android.support.design.widget.AppBarLayout>
 
     <include layout="@layout/content_customer_registration" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+    <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        android:visibility="gone"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        android:layout_margin="25dp"
+        app:layout_anchor="@id/app_bar"
+        app:layout_anchorGravity="bottom|end|right">
 
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/fab_margin"
+            android:visibility="visible"
+            app:fabSize="normal"
+            app:srcCompat="@drawable/ic_done_black_24dp" />
+
+        <ImageButton
+            android:id="@+id/custom_fab"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/ripple"
+            android:elevation="1dp"
+            android:stateListAnimator="@animator/fab_anim"
+            android:tint="@android:color/white"
+            android:visibility="gone"
+            app:srcCompat="@drawable/ic_done_black_24dp" />
+    </FrameLayout>
 </android.support.design.widget.CoordinatorLayout>
