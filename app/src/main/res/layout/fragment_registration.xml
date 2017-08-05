@@ -1,0 +1,118 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    tools:context="com.itg.jobcardmanagement.registration.RegistrationFragment">
+
+
+    <LinearLayout
+        android:id="@+id/ll_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/in_fName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="24dp"
+        >
+        <EditText
+            android:id="@+id/edt_fName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="First Name"
+            android:textSize="24sp"
+            android:inputType="textPassword"
+            android:nextFocusUp="@id/edt_email"
+            android:nextFocusLeft="@id/edt_email"
+            />
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/in_lName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="24dp"
+        >
+        <EditText
+            android:id="@+id/edt_lName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Last Name"
+            android:textSize="24sp"
+
+            android:inputType="textPassword"
+            android:nextFocusUp="@id/edt_email"
+            android:nextFocusLeft="@id/edt_email"
+            />
+    </android.support.design.widget.TextInputLayout>
+    </LinearLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/in_password"
+        android:layout_below="@+id/ll_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="24dp"
+        >
+        <EditText
+            android:id="@+id/edt_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:textSize="24sp"
+
+            android:inputType="textPassword"
+            android:nextFocusUp="@id/edt_email"
+            android:nextFocusLeft="@id/edt_email"
+            />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/in_cpassword"
+        android:layout_below="@+id/in_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="24dp"
+        >
+        <EditText
+            android:id="@+id/edt_cpassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:textSize="24sp"
+
+            android:inputType="textPassword"
+            android:nextFocusUp="@id/edt_email"
+            android:nextFocusLeft="@id/edt_email"
+            />
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignBaseline="@+id/in_cpassword"
+        android:layout_below="@+id/in_cpassword"
+        android:text="NEXT"
+        android:minHeight="42dp"
+        android:background="@drawable/bg_button"
+        android:textColor="@color/white"
+        />
+
+</RelativeLayout>
