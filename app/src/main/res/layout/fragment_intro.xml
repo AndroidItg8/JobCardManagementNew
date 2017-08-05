@@ -1,0 +1,41 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:id="@+id/fragment_main"
+    android:background="@android:color/transparent"
+    tools:context="com.itg.jobcardmanagement.intro.IntroFragment">
+
+
+
+            <ImageView
+                android:layout_width="@dimen/img_width_height"
+                android:layout_height="@dimen/img_width_height"
+                android:src="@drawable/bmw_car_black" />
+
+            <TextView
+                android:id="@+id/txt_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/slide_1_title"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/slide_title"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txt_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:paddingLeft="@dimen/desc_padding"
+                android:paddingRight="@dimen/desc_padding"
+                android:text="@string/slide_1_desc"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/slide_desc" />
+
+
+
+</LinearLayout>

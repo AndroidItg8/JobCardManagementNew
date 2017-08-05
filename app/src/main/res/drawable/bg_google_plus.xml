@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item>
+        <shape android:shape="rectangle">
+        <solid android:color="@color/bg_g_plus" />
+            <corners android:radius="4dp" />
+        </shape>
+
+    </item>
+    <item android:drawable="@drawable/ic_001_google_plus"
+        android:gravity="left|center_vertical">
+    </item>
+
+</layer-list>

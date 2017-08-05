@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.itg.jobcardmanagement.LoginActivity"
+    tools:showIn="@layout/activity_login">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="16dp">
+        <LinearLayout
+            android:id="@+id/ll_social"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <!--android:drawableLeft="@drawable/ic_002_facebook"-->
+            <!--android:drawableStart="@drawable/ic_002_facebook"            -->
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/bg_facebook"
+                android:layout_margin="16dp"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:gravity="center"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:text="Facebook"
+                android:focusableInTouchMode="true"
+                android:focusable="true"
+                android:id="@+id/btn_fb">
+                <requestFocus />
+                </TextView>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_margin="16dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/bg_google_plus"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:text="Google"
+                android:textAllCaps="false"
+                android:id="@+id/btn_gplus"/>
+
+            </LinearLayout>
+
+
+
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:layout_marginTop="18dp"
+            android:layout_below="@+id/ll_social"
+            android:background="@android:color/darker_gray" />
+        <TextView
+            android:id="@+id/lbl_or"
+            android:layout_below="@+id/ll_social"
+            android:layout_width="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="OR"
+            android:padding="10dp"
+            android:background="@color/white"
+            android:layout_height="wrap_content" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/in_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lbl_or"
+            android:layout_marginTop="24dp"
+            >
+            <EditText
+                android:id="@+id/edt_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter your email"
+                android:textSize="24sp"
+                android:inputType="textEmailAddress"
+                android:nextFocusUp="@id/edt_email"
+                android:nextFocusLeft="@id/edt_email"
+                />
+        </android.support.design.widget.TextInputLayout>
+
+        <TextView
+            android:id="@+id/txt_signup_lbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/in_email"
+            android:layout_marginTop="24dp"
+            android:text="Not an user yet?"/>
+        <TextView
+            android:id="@+id/txt_signup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/txt_signup_lbl"
+            android:layout_toRightOf="@+id/txt_signup_lbl"
+            android:layout_alignBaseline="@+id/txt_signup_lbl"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textSize="16sp"
+            android:textColor="@color/bg_g_plus"
+            android:text="SIGN UP"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignBaseline="@+id/txt_signup_lbl"
+            android:text="NEXT"
+            android:minHeight="42dp"
+            android:background="@drawable/bg_button"
+            android:textColor="@color/white"
+            />
+
+    </RelativeLayout>
+
+</android.support.v4.widget.NestedScrollView>
