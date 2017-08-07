@@ -1,20 +1,24 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
     tools:context="com.itg.jobcardmanagement.registration.fragment.CustomerBasicInfoFragment">
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="40dp">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginStart="30dp">
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/input_name"
@@ -28,22 +32,45 @@
                 android:id="@+id/edt_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Name"
+                android:hint=" First Name"
                 android:inputType="text"
                 android:lines="1"
                 android:maxLines="1"
                 android:layout_marginTop="15dp"
                 android:textColor="@color/colorBlack"
                 android:textColorHint="@color/colorGray"
-                android:textSize="16sp"
+                android:textSize="@dimen/textViewSize"
                 app:hintTextAppearance="@color/colorGray" />
         </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_l_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/colorGray"
+            android:layout_below="@+id/input_name"
+            app:errorTextAppearance="@color/colorRed"
+            app:hintTextAppearance="@color/colorGray">
 
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/edt_l_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint=" Last Name"
+                android:inputType="text"
+                android:lines="1"
+                android:maxLines="1"
+                android:layout_marginTop="15dp"
+                android:textColor="@color/colorBlack"
+                android:textColorHint="@color/colorGray"
+                android:textSize="@dimen/textViewSize"
+
+                app:hintTextAppearance="@color/colorGray" />
+        </android.support.design.widget.TextInputLayout>
         <android.support.design.widget.TextInputLayout
             android:id="@+id/input_contact"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/input_name"
+            android:layout_below="@+id/input_l_name"
             android:textColorHint="@color/colorGray"
             app:errorTextAppearance="@color/colorRed"
             app:hintTextAppearance="@color/colorGray">
@@ -62,7 +89,6 @@
                 android:textSize="16sp"
                 app:hintTextAppearance="@color/colorGray" />
         </android.support.design.widget.TextInputLayout>
-
         <android.support.design.widget.TextInputLayout
             android:id="@+id/input_address"
             android:layout_width="match_parent"
@@ -84,12 +110,61 @@
                 android:maxLines="3"
                 android:textColor="@color/colorBlack"
                 android:textColorHint="@color/colorGray"
-                android:textSize="16sp"
+                android:textSize="@dimen/textViewSize"
+
                 app:hintTextAppearance="@color/colorGray" />
         </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_city"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/input_address"
+            android:textColorHint="@color/colorGray"
+            app:errorTextAppearance="@color/colorRed"
+            app:hintTextAppearance="@color/colorGray">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/edt_city"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ellipsize="end"
+                android:hint="City"
+                android:inputType="text"
+                android:layout_marginTop="15dp"
+                android:lines="3"
+                android:maxLines="3"
+                android:textColor="@color/colorBlack"
+                android:textColorHint="@color/colorGray"
+                android:textSize="@dimen/textViewSize"
+                app:hintTextAppearance="@color/colorGray" />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_state"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/input_city"
+            android:textColorHint="@color/colorGray"
+            app:errorTextAppearance="@color/colorRed"
+            app:hintTextAppearance="@color/colorGray">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/edt_state"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ellipsize="end"
+                android:hint="State "
+                android:inputType="text"
+                android:layout_marginTop="15dp"
+                android:lines="3"
+                android:maxLines="3"
+                android:textColor="@color/colorBlack"
+                android:textColorHint="@color/colorGray"
+                android:textSize="@dimen/textViewSize"
+                app:hintTextAppearance="@color/colorGray" />
+        </android.support.design.widget.TextInputLayout>
+        </RelativeLayout>
+
+    </ScrollView>
 
 
-    </RelativeLayout>
-
-
-</ScrollView>
+</RelativeLayout>

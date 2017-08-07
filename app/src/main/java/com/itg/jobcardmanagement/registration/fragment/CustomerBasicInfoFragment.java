@@ -6,11 +6,15 @@ import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.text.InputType;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.itg.jobcardmanagement.R;
+import com.itg.jobcardmanagement.registration.CustomerRegistrationActivity;
+import com.itg.jobcardmanagement.registration.model.RegistrationModel;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -26,10 +30,16 @@ public class CustomerBasicInfoFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
+    Unbinder unbinder;
     @BindView(R.id.edt_name)
     TextInputEditText edtName;
     @BindView(R.id.input_name)
     TextInputLayout inputName;
+    @BindView(R.id.edt_l_name)
+    TextInputEditText edtLName;
+    @BindView(R.id.input_l_name)
+    TextInputLayout inputLName;
     @BindView(R.id.edt_contact)
     TextInputEditText edtContact;
     @BindView(R.id.input_contact)
@@ -38,11 +48,19 @@ public class CustomerBasicInfoFragment extends Fragment {
     TextInputEditText edtAddress;
     @BindView(R.id.input_address)
     TextInputLayout inputAddress;
-    Unbinder unbinder;
+    @BindView(R.id.edt_city)
+    TextInputEditText edtCity;
+    @BindView(R.id.input_city)
+    TextInputLayout inputCity;
+    @BindView(R.id.edt_state)
+    TextInputEditText edtState;
+    @BindView(R.id.input_state)
+    TextInputLayout inputState;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private RegistrationModel model;
 
 
     public CustomerBasicInfoFragment() {
@@ -53,15 +71,14 @@ public class CustomerBasicInfoFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
      * @param param2 Parameter 2.
      * @return A new instance of fragment CustomerBasicInfoFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static CustomerBasicInfoFragment newInstance(String param1, String param2) {
+    public static CustomerBasicInfoFragment newInstance(RegistrationModel model, String param2) {
         CustomerBasicInfoFragment fragment = new CustomerBasicInfoFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
+        args.putParcelable(ARG_PARAM1, model);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
@@ -71,7 +88,7 @@ public class CustomerBasicInfoFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
+            model = getArguments().getParcelable(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
@@ -85,7 +102,58 @@ public class CustomerBasicInfoFragment extends Fragment {
         edtAddress.setInputType(InputType.TYPE_CLASS_TEXT |
                 InputType.TYPE_TEXT_FLAG_MULTI_LINE |
                 InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
+
+        checkRegistrationModel();
+
+
         return view;
+    }
+
+    private void checkRegistrationModel() {
+        if(model!= null )
+        {
+             if(validate())
+             {
+                 ((CustomerRegistrationActivity)getActivity()).sendBaiscInfoToActivity(edtName.getText().toString(), edtLName.getText().toString(), edtContact.getText().toString(),edtAddress.getText().toString(),edtCity.getText().toString(),edtState.getText().toString());
+             }else
+             {
+                 Toast.makeText(getActivity(), "Field are not match", Toast.LENGTH_SHORT).show();
+             }
+        }
+
+    }
+
+    private boolean validate() {
+        boolean isValidate = true;
+
+        if(TextUtils.isEmpty(edtName.getText().toString())) {
+            edtName.setError("Field is empty");
+            isValidate = false;
+        } if(TextUtils.isEmpty(edtLName.getText().toString())) {
+            edtLName.setError("Field is empty");
+            isValidate = false;
+        }
+         if(TextUtils.isEmpty(edtContact.getText().toString())) {
+             edtContact.setError("Field is empty");
+            isValidate = false;
+        }
+         else if(edtContact.getText().length()!=10)
+         {
+             edtContact.setError("Enter Valid Number");
+             isValidate = false;
+         }
+        if(TextUtils.isEmpty(edtAddress.getText().toString())) {
+            edtAddress.setError("Field is empty");
+            isValidate = false;
+        }if(TextUtils.isEmpty(edtCity.getText().toString())) {
+            edtCity.setError("Field is empty");
+            isValidate = false;
+        }if(TextUtils.isEmpty(edtState.getText().toString())) {
+            edtState.setError("Field is empty");
+            isValidate = false;
+        }
+
+        return isValidate;
     }
 
     @Override
@@ -93,4 +161,6 @@ public class CustomerBasicInfoFragment extends Fragment {
         super.onDestroyView();
         unbinder.unbind();
     }
+
+
 }

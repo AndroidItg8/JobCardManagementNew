@@ -5,6 +5,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.itg.jobcardmanagement.registration.fragment.CustomerBasicInfoFragment;
+import com.itg.jobcardmanagement.registration.fragment.CustomerVehicleInfoFragment;
+import com.itg.jobcardmanagement.registration.model.RegistrationModel;
 
 /**
  * Created by Android itg 8 on 8/5/2017.
@@ -13,8 +15,11 @@ import com.itg.jobcardmanagement.registration.fragment.CustomerBasicInfoFragment
 public class RegistrationViewPagerAdapter extends FragmentPagerAdapter {
 
 
-    public RegistrationViewPagerAdapter(FragmentManager fm) {
+    private RegistrationModel model;
+
+    public RegistrationViewPagerAdapter(FragmentManager fm, RegistrationModel model) {
         super(fm);
+        this.model = model;
     }
 
     @Override
@@ -22,11 +27,12 @@ public class RegistrationViewPagerAdapter extends FragmentPagerAdapter {
         switch (position)
         {
             case 0:
-              return  new CustomerBasicInfoFragment();
+              return CustomerBasicInfoFragment.newInstance(model," ");
             case 1:
-                 return  new CustomerVehicleInfoFragment();
+                 return  CustomerVehicleInfoFragment.newInstance(model," ");
             case 2:
-                return  new CustomerVehicleInfoFragment();
+                return  new CustomerVehicleInfoFragment(model);
+
         }
         return null;
     }

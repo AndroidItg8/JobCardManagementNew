@@ -8,7 +8,7 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.itg.jobcardmanagement.registration.LoginActivity"
+    tools:context="com.itg.jobcardmanagement.registration.activity.LoginActivity"
     tools:showIn="@layout/activity_login">
 
 
