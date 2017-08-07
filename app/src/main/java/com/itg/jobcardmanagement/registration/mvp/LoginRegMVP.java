@@ -13,11 +13,14 @@ public class LoginRegMVP {
         void onMobileNumberEntered(String mobileNo);
         void onEmailInvalid();
         void onMobileInvalid();
+        void onUsernameFieldEmpty();
         void onVerificationFailed(String message);
         void onPasswordNotMatch();
         void onUserFound(String userId, String profilePicUrl);
         void showProgress();
         void hideProgress();
+
+        String getUsername();
     }
 
    public interface LoginPresenter{

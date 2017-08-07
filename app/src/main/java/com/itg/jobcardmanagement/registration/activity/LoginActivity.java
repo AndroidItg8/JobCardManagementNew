@@ -108,6 +108,11 @@ public class LoginActivity extends AppCompatActivity implements LoginRegMVP.Logi
     }
 
     @Override
+    public void onUsernameFieldEmpty() {
+        inEmail.setError(getString(R.string.username_is_empty));
+    }
+
+    @Override
     public void onVerificationFailed(String message) {
 
     }
@@ -130,6 +135,11 @@ public class LoginActivity extends AppCompatActivity implements LoginRegMVP.Logi
     @Override
     public void hideProgress() {
 
+    }
+
+    @Override
+    public String getUsername() {
+        return edtEmail.getText().toString();
     }
 
     public void setUsername(String username) {

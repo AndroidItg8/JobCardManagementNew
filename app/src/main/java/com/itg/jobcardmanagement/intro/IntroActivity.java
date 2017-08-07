@@ -166,7 +166,7 @@ public class IntroActivity extends AppCompatActivity implements View.OnClickList
 
     private void finishIntro() {
         Prefs.putBoolean("firstStart", false);
-        startActivity(new Intent(this, CustomerRegistrationActivity.class));
+        startActivity(new Intent(this, LoginActivity.class));
         finish();
     }
 

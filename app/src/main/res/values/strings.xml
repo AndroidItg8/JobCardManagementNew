@@ -121,6 +121,7 @@
     <string name="title_activity_password">PasswordActivity</string>
     <string name="email_invalid">Invalid Email Address</string>
     <string name="mobile_invalid">Invalid Mobile Number</string>
+    <string name="username_is_empty">Field is empty</string>
 
 
 </resources>
