@@ -33,6 +33,9 @@ public class LoginPresenterImp extends BaseWeakPresenter implements LoginRegMVP.
     }
 
     private int checkTypeofUsername(String username) {
+        if(username.isEmpty() && hasView()){
+            getLoginView().onUsernameFieldEmpty();
+        }
         int type = -1;
         if (isEmailValid(username)) {
             type = EMAIL;
@@ -51,7 +54,7 @@ public class LoginPresenterImp extends BaseWeakPresenter implements LoginRegMVP.
     }
 
     private boolean isValidPhoneNumber(String mobile) {
-        String regEx = "^[0-9]{11,12}$";
+        String regEx = "[0-9]+";
         return mobile.matches(regEx);
     }
 
@@ -111,7 +114,9 @@ public class LoginPresenterImp extends BaseWeakPresenter implements LoginRegMVP.
 
     @Override
     public void onRegSuccess(Object module) {
-
+        if(hasView()){
+            getLoginView().onUserFound("1","www");
+        }
     }
 
     private LoginRegMVP.LoginView getLoginView() {
