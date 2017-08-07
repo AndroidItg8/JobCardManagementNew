@@ -1,4 +1,4 @@
-package com.itg.jobcardmanagement.registration;
+package com.itg.jobcardmanagement.registration.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
@@ -135,4 +135,6 @@ public class LoginActivity extends AppCompatActivity implements LoginRegMVP.Logi
     public void setUsername(String username) {
         this.username = username;
     }
+
+
 }

@@ -11,12 +11,12 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_weight="1.7"
-        android:background="@drawable/bg_edittext"
+        android:background="@drawable/bg_edittext_bottom"
         android:inputType="text"
         android:lines="2"
         android:maxLines="2"
         android:textColor="@color/colorPrimary"
-        android:textColorHint="@color/colorGray"
+        android:textColorHint="@color/colorBlack"
         android:textSize="@dimen/textViewSize">
 
         <requestFocus />

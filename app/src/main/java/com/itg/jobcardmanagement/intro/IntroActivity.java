@@ -19,7 +19,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.itg.jobcardmanagement.registration.CustomerRegistrationActivity;
-import com.itg.jobcardmanagement.registration.LoginActivity;
 import com.itg.jobcardmanagement.R;
 import com.itg.jobcardmanagement.common.Logger;
 import com.itg.jobcardmanagement.common.Prefs;
