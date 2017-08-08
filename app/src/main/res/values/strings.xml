@@ -122,6 +122,11 @@
     <string name="email_invalid">Invalid Email Address</string>
     <string name="mobile_invalid">Invalid Mobile Number</string>
     <string name="username_is_empty">Field is empty</string>
+    <string name="conform_password">Conform Password</string>
+    <string name="password">Password</string>
+    <string name="last_name">Last Name</string>
+    <string name="first_name">First Name</string>
+    <string name="btn_next">NEXT</string>
 
 
 </resources>

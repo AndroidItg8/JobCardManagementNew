@@ -2,16 +2,15 @@ package com.itg.jobcardmanagement.registration.mvp;
 
 import android.util.Log;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.itg.jobcardmanagement.common.MyApplication;
 import com.itg.jobcardmanagement.common.NetworkCall;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -24,10 +23,12 @@ import java.util.Map;
 public class LoginModuleImp implements LoginRegMVP.LoginModule {
 
     private static final String DUMMY_USERNAME = "9890410668";
+    private static final String PROFILE_PIC = "Profiepic";
+    private static final String STATUS = "status";
+    private static final String FLAG = "flag";
     private LoginRegMVP.LoginListener listener;
 
     public LoginModuleImp(LoginRegMVP.LoginListener listener) {
-
         this.listener = listener;
     }
 
@@ -74,15 +75,25 @@ public class LoginModuleImp implements LoginRegMVP.LoginModule {
 //            };
 //        }
             Map<String, String> params = new HashMap<String, String>();
-            params.put("Emailid",username);
-            params.put("usernametype", String.valueOf(type));
-            JsonObjectRequest postRequest = new JsonObjectRequest(Request.Method.POST, NetworkCall.getInstance().checkLoginByUsername(),new JSONObject(params),
+            params.put("Userid", username);
+//            params.put("usernametype", String.valueOf(type));
+            JsonObjectRequest postRequest = new JsonObjectRequest(Request.Method.POST, NetworkCall.getInstance().checkLoginByUsername(), new JSONObject(params),
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
                             // response
-                            
                             VolleyLog.d("Response", response.toString());
+                            try {
+
+                                if (response.getBoolean(FLAG)) {
+                                    listener.onUserAvaiable(response.getString(STATUS), response.getString(PROFILE_PIC));
+
+                                } else {
+                                    listener.onRegFail(username);
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
                         }
                     },
                     new Response.ErrorListener() {
@@ -90,10 +101,11 @@ public class LoginModuleImp implements LoginRegMVP.LoginModule {
                         public void onErrorResponse(VolleyError error) {
                             // error
                             error.printStackTrace();
-                            Log.d("Error.Response", error.getMessage());
+                            listener.onError(error.getMessage());
+                            Log.d("Error.Response", error.toString());
                         }
                     }
-            ) ;
+            );
             MyApplication.getInstance().addToRequestQueue(postRequest);
         }
     }

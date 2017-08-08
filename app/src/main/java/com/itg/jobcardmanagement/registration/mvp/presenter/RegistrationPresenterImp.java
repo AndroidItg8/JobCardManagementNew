@@ -18,7 +18,6 @@ public class RegistrationPresenterImp  implements  RegistrationPresenter,Registr
     public RegistrationPresenterImp(RegistrationView view) {
 
         this.view = view;
-         module = new RegistrationPresenterImp();
 
     }
 

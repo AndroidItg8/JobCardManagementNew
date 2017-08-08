@@ -27,11 +27,11 @@ public class RegistrationViewPagerAdapter extends FragmentPagerAdapter {
         switch (position)
         {
             case 0:
-              return CustomerBasicInfoFragment.newInstance(model," ");
+              return CustomerBasicInfoFragment.newInstance(model);
             case 1:
-                 return  CustomerVehicleInfoFragment.newInstance(model," ");
+                 return  CustomerVehicleInfoFragment.newInstance(model);
             case 2:
-                return  new CustomerVehicleInfoFragment(model);
+                return  CustomerVehicleInfoFragment.newInstance(model);
 
         }
         return null;

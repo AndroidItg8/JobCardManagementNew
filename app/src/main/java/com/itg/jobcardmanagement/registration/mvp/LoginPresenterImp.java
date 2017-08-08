@@ -27,6 +27,7 @@ public class LoginPresenterImp extends BaseWeakPresenter implements LoginRegMVP.
         if (hasView()) {
             int type = checkTypeofUsername(username);
             if (type > 0) {
+                getLoginView().showProgress();
                 module.onUsernameSubmit(username,type);
             }
         }
@@ -94,22 +95,34 @@ public class LoginPresenterImp extends BaseWeakPresenter implements LoginRegMVP.
 
     @Override
     public void onUserAvaiable(String userId, String profilePicUrl) {
-
+        if(hasView()){
+            getLoginView().hideProgress();
+            getLoginView().onUserFound(userId,profilePicUrl);
+        }
     }
 
     @Override
     public void onUserFail(String message) {
-
+        if(hasView()) {
+            getLoginView().hideProgress();
+        }
     }
 
     @Override
     public void onError(String err) {
-
+        if(hasView()) {
+            getLoginView().hideProgress();
+        }
     }
 
     @Override
     public void onRegFail(String message) {
-
+        if (hasView()) {
+            getLoginView().onVerificationFailed(message);
+            if(hasView()) {
+                getLoginView().hideProgress();
+            }
+        }
     }
 
     @Override

@@ -22,6 +22,7 @@ import com.itg.jobcardmanagement.registration.CustomerRegistrationActivity;
 import com.itg.jobcardmanagement.R;
 import com.itg.jobcardmanagement.common.Logger;
 import com.itg.jobcardmanagement.common.Prefs;
+import com.itg.jobcardmanagement.registration.activity.LoginActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

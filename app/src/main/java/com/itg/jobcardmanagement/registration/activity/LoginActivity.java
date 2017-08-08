@@ -1,5 +1,6 @@
 package com.itg.jobcardmanagement.registration.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -12,9 +13,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.itg.jobcardmanagement.R;
+import com.itg.jobcardmanagement.common.CommonMethod;
+import com.itg.jobcardmanagement.common.Prefs;
+import com.itg.jobcardmanagement.registration.PasswordActivity;
 import com.itg.jobcardmanagement.registration.mvp.LoginPresenterImp;
 import com.itg.jobcardmanagement.registration.mvp.LoginRegMVP;
 
@@ -24,6 +29,8 @@ import butterknife.OnClick;
 
 public class LoginActivity extends AppCompatActivity implements LoginRegMVP.LoginView {
 
+    public static final int REG = 1;
+    public static final int PASS = 2;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.toolbar_layout)
@@ -54,6 +61,8 @@ public class LoginActivity extends AppCompatActivity implements LoginRegMVP.Logi
     LoginRegMVP.LoginPresenter presenter;
     @BindView(R.id.btn_next)
     Button btnNext;
+    @BindView(R.id.progressbar)
+    ProgressBar progressbar;
     private String username;
 
     @Override
@@ -79,9 +88,9 @@ public class LoginActivity extends AppCompatActivity implements LoginRegMVP.Logi
 
     }
 
-    @OnClick({R.id.btn_next,R.id.txt_signup})
-    public void onClick(View v){
-        if(v.getId()==R.id.btn_next){
+    @OnClick({R.id.btn_next, R.id.txt_signup})
+    public void onClick(View v) {
+        if (v.getId() == R.id.btn_next) {
             inEmail.setError(null);
             presenter.onUsernameSubmit(edtEmail.getText().toString());
         }
@@ -114,7 +123,15 @@ public class LoginActivity extends AppCompatActivity implements LoginRegMVP.Logi
 
     @Override
     public void onVerificationFailed(String message) {
+        startRegActivity(getUsername(), message,REG);
+    }
 
+    private void startRegActivity(String username, String profilePic, int type) {
+        Intent intent = new Intent(this, PasswordActivity.class);
+        intent.putExtra(CommonMethod.USERNAME, username);
+        intent.putExtra(CommonMethod.PROFILE_PIC, profilePic);
+        intent.putExtra(CommonMethod.TYPE,type);
+        startActivity(intent);
     }
 
     @Override
@@ -124,17 +141,24 @@ public class LoginActivity extends AppCompatActivity implements LoginRegMVP.Logi
 
     @Override
     public void onUserFound(String userId, String profilePicUrl) {
-
+        Prefs.putString(CommonMethod.USERNAME, userId);
+        startRegActivity(getUsername(), profilePicUrl, PASS);
     }
 
     @Override
     public void showProgress() {
-
+        btnNext.setVisibility(View.GONE);
+        btnFb.setEnabled(false);
+        btnGplus.setEnabled(false);
+        progressbar.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideProgress() {
-
+        btnNext.setVisibility(View.VISIBLE);
+        btnFb.setEnabled(true);
+        btnGplus.setEnabled(true);
+        progressbar.setVisibility(View.GONE);
     }
 
     @Override
