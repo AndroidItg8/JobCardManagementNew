@@ -7,4 +7,5 @@ package com.itg.jobcardmanagement.common;
 public interface NetworkListener {
     String LOGIN_URL="/api/CustomerApp/VerifyUser";
     String USER_LOGIN="/Account/UserLogin";
+    String REGISTRATION="/api/CustomerApp/Register";
 }

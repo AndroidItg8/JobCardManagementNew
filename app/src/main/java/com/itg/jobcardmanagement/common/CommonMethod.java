@@ -13,4 +13,5 @@ public class CommonMethod {
     public static final String PROFILE_PIC = "Profile_pic";
 
     public static final String TYPE = "TYPE";
+    public static final String REG_REQ = "reg_req";
 }

@@ -5,7 +5,7 @@ package com.itg.jobcardmanagement.common;
  */
 
 public class NetworkCall implements NetworkListener {
-    private static final String BASE_URL="http://103.229.24.44:8086";
+    private static final String BASE_URL = "http://103.229.24.44:8086";
 
     private static final NetworkCall ourInstance = new NetworkCall();
 
@@ -16,11 +16,31 @@ public class NetworkCall implements NetworkListener {
     private NetworkCall() {
     }
 
-    public String checkLoginByUsername(){
-        return BASE_URL+LOGIN_URL;
+    public String checkLoginByUsername() {
+        return BASE_URL + LOGIN_URL;
     }
 
-    public String checkLoginByPassword(){
-        return BASE_URL+USER_LOGIN;
+    public String checkLoginByPassword() {
+        return BASE_URL + USER_LOGIN;
+    }
+
+    /**
+     * Registration Fail
+     * {
+     * "Message": "The request is invalid.",
+     * "ModelState": {
+     * "": [
+     * "Name rajkumaddri@gmail.com is already taken."
+     * ]
+     * }
+     * }
+     * Successful
+     * {
+     * "status": "Registered Successfully",
+     * "flag": true
+     * }
+     */
+    public String register() {
+        return BASE_URL + REGISTRATION;
     }
 }

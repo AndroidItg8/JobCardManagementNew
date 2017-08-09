@@ -30,4 +30,18 @@ public interface RegMVP {
         void onNextButtonClicked();
 
     }
+
+    public interface RegModule{
+        void onDestroy();
+        void onNextButtonClicked(String fName, String lName, String password,String cPassword,RegListener listener);
+    }
+
+    public interface RegListener{
+        void onSuccessfulReg(String token);
+        void onRegistrationFail(String cause);
+        void onNetworkCallFailed(String cause);
+
+        void onUnkownError(String response);
+    }
+
 }

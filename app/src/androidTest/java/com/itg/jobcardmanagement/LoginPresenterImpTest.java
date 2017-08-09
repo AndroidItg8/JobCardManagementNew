@@ -1,6 +1,6 @@
 package com.itg.jobcardmanagement;
 
-import com.itg.jobcardmanagement.registration.LoginActivity;
+import com.itg.jobcardmanagement.registration.activity.LoginActivity;
 import com.itg.jobcardmanagement.registration.mvp.LoginModuleImp;
 import com.itg.jobcardmanagement.registration.mvp.LoginPresenterImp;
 import com.itg.jobcardmanagement.registration.mvp.LoginRegMVP;
@@ -53,6 +53,7 @@ public class LoginPresenterImpTest {
         presenter.onUsernameSubmit(WRONG_MOBILE_NUMBER);
         verify(view).onMobileInvalid();
     }
+
     @Test
     public void shouldShowErrorMessageWhenUsernameIsEmailIdNotValid() throws Exception {
 //        when(view.getUsername()).thenReturn(USERNAME);
