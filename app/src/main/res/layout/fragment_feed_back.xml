@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp">
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="3"
+            android:layout_gravity="center"
+            android:id="@+id/rgb_feedback">
+            <RadioButton
+                android:id="@+id/rgb_fed_sad"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:button="null"
+                android:text="Sad"
+                android:textColor="#48A0DC"
+                android:gravity="center"
+                android:drawablePadding="10dp"
+                android:drawableTop="@drawable/ic_sad"/>
+            <RadioButton
+                android:id="@+id/rgb_fed_happy"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:button="null"
+                android:text="Happy"
+                android:drawablePadding="10dp"
+                android:textColor="#C03A2B"
+                android:gravity="center"
+                android:drawableTop="@drawable/ic_happy"/>
+            <RadioButton
+                android:id="@+id/rgb_fed_aw"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:button="null"
+                android:text="awesome"
+                android:drawablePadding="10dp"
+                android:textColor="#AF8066"
+                android:gravity="center"
+                android:drawableTop="@drawable/ic_awesome"/>
+        </RadioGroup>
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

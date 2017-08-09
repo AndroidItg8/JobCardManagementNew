@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/img_car"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:textAllCaps="true"
+        android:layout_margin="8dp"
+        app:srcCompat="@drawable/ic_directions_car_black_24dp"
+        android:layout_alignTop="@+id/txt_model"
+        android:layout_alignBottom="@+id/txt_date"
+        android:visibility="visible" />
+    <TextView
+        android:id="@+id/txt_model"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/TextViewStyle"
+        android:hint="ModelName"
+        android:layout_marginTop="08dp"
+        android:layout_marginBottom="03dp"
+        android:layout_toEndOf="@+id/img_car"
+        android:layout_toRightOf="@+id/img_car"/>
+    <TextView
+        android:id="@+id/txt_registration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/TextViewStyle"
+        android:layout_marginTop="04dp"
+        android:layout_below="@+id/txt_model"
+        android:hint="Registration Number"
+        android:layout_toEndOf="@+id/img_car"
+        android:layout_toRightOf="@+id/img_car"/>
+    <TextView
+        android:id="@+id/txt_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/TextViewStyle"
+        android:layout_marginTop="04dp"
+        android:layout_below="@+id/txt_registration"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:hint="Date"
+        android:layout_marginBottom="08dp"
+        android:layout_marginEnd="08dp"
+        android:layout_marginRight="08dp" />
+</RelativeLayout>

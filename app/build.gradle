@@ -10,6 +10,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        android.defaultConfig.vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
         release {
@@ -25,15 +26,19 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+    // required if you want to use Mockito for unit tests
+    // required if you want to use Mockito for Android tests
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:support-v4:25.3.1'
     compile 'com.jakewharton:butterknife:8.7.0'
     compile 'com.android.support:design:25.3.1'
+    compile 'pub.devrel:easypermissions:0.2.0'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.android.volley:volley:1.0.0'
+    compile 'com.google.code.gson:gson:2.8.1'
     testCompile 'junit:junit:4.12'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.7.0'
-    // required if you want to use Mockito for unit tests
     testCompile 'org.mockito:mockito-core:2.7.22'
-    // required if you want to use Mockito for Android tests
     androidTestCompile 'org.mockito:mockito-android:2.7.22'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.7.0'
 }

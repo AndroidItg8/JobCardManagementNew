@@ -25,11 +25,31 @@
     <style name="TextViewStyle" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="android:textSize">@dimen/textViewSize</item>
         <item name="android:textColorHint">@color/colorGray</item>
-        <item name="android:textColor">@color/colorBlack</item>
         <item name="android:textStyle">normal</item>
         <item name="android:layout_marginRight">20dp</item>
         <item name="android:layout_marginLeft">20dp</item>
 
     </style>
+
+
+    <!---BottomSheet-->
+
+    <!--- for BottomSheet-->
+
+    <style name="MaterialDialogSheet" parent="@android:style/Theme.Dialog">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@color/colorTransparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowAnimationStyle">@style/MaterialDialogSheetAnimation</item>
+    </style>
+
+    <style name="MaterialDialogSheetAnimation">
+        <item name="android:windowEnterAnimation">@anim/popup_show</item>
+        <item name="android:windowExitAnimation">@anim/popup_hide</item>
+    </style>
+
 
 </resources>

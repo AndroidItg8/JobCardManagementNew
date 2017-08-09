@@ -18,7 +18,7 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.itg.jobcardmanagement.registration.LoginActivity;
+import com.itg.jobcardmanagement.registration.CustomerRegistrationActivity;
 import com.itg.jobcardmanagement.R;
 import com.itg.jobcardmanagement.common.Logger;
 import com.itg.jobcardmanagement.common.Prefs;
@@ -60,10 +60,8 @@ public class IntroActivity extends AppCompatActivity implements View.OnClickList
                 //  Check either activity or app is open very first time or not and do action
                 if (!isFirstStart) {
                     //  Launch application introduction screen
-                    Intent i = new Intent(IntroActivity.this, LoginActivity.class);
-                    startActivity(i);
-                    Prefs.putBoolean("firstStart", false);
-                    finish();
+                  finishIntro();
+
                 }
             }
         });
@@ -168,7 +166,7 @@ public class IntroActivity extends AppCompatActivity implements View.OnClickList
 
     private void finishIntro() {
         Prefs.putBoolean("firstStart", false);
-        startActivity(new Intent(this, LoginActivity.class));
+        startActivity(new Intent(this, CustomerRegistrationActivity.class));
         finish();
     }
 
