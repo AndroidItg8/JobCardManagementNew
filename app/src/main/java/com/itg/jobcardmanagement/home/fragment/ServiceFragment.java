@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 
 import com.itg.jobcardmanagement.R;
 import com.itg.jobcardmanagement.home.adapter.VehicleServiceAdapter;
+import com.itg.jobcardmanagement.service.ServiceDetailsActivity;
 import com.itg.jobcardmanagement.widget.SimpleDividerItemDecoration;
 
 import butterknife.BindView;
@@ -82,20 +83,17 @@ public class ServiceFragment extends Fragment {
     }
 
     private void setRecyclerView() {
-        recyclerViewService.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerViewService.setLayoutManager(new LinearLayoutManager(mContext));
+        SimpleDividerItemDecoration dividerItemDecoration = new SimpleDividerItemDecoration(recyclerViewService.getContext());
+        recyclerViewService.addItemDecoration(dividerItemDecoration);
         adapter = new VehicleServiceAdapter(getActivity(), new VehicleServiceAdapter.ServiceItem() {
      @Override
      public void onServiceItemClickedListener(int adapterPosition) {
-        // startActivity(new Intent(mContext, ));
-
-
-
-
+         startActivity(new Intent(mContext,ServiceDetailsActivity.class ));
      }
  });
-        SimpleDividerItemDecoration dividerItemDecoration = new SimpleDividerItemDecoration(getActivity());
-        recyclerViewService.addItemDecoration(dividerItemDecoration);
         recyclerViewService.setAdapter(adapter);
+
     }
 
     @Override

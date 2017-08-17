@@ -157,7 +157,7 @@ public class DocumentDailogueFragment extends DialogFragment implements View.OnC
         if (documnetFileList != null && documnetFileList.size() > 0) {
             rlRecyclerView.setVisibility(View.VISIBLE);
             rlNoItem.setVisibility(View.GONE);
-            SimpleDividerItemDecoration simpleDividerItemDecoration = new SimpleDividerItemDecoration(mContext);
+            SimpleDividerItemDecoration simpleDividerItemDecoration = new SimpleDividerItemDecoration(recyclerViewDocument.getContext());
             recyclerViewDocument.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL,false));
             recyclerViewDocument.addItemDecoration(simpleDividerItemDecoration);
             adapter = new DocumentFileAdapter(mContext, documnetFileList, new DocumentFileAdapter.DocumentListener() {

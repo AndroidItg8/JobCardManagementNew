@@ -2,5 +2,7 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="app_bar_height">220dp</dimen>
     <dimen name="text_margin">16dp</dimen>
-    <dimen name="textViewSize">18sp</dimen>
+    <dimen name="textViewSize">16sp</dimen>
+    <dimen name="textViewSizeSmall">10sp</dimen>
+    <dimen name="textViewSizebig">20sp</dimen>
 </resources>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.itg.jobcardmanagement.home.HomeActivity"
+    tools:showIn="@layout/activity_home">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/txt_model"
+            android:textSize="19sp"
+            android:textColorHint="@color/colorGray"
+            android:textColor="@color/colorBlack"
+            android:hint="Car Model"
+            android:focusable="false"
+            android:layout_margin="10dp"
+            android:clickable="true"
+            android:background="@drawable/bg_border_home"
+            android:gravity="center_horizontal|center_vertical"/>
+
+        <include layout="@layout/layout_item_vehicle"
+            android:id="@+id/include"
+            android:layout_below="@+id/txt_model"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+
+        <android.support.design.widget.TabLayout
+            android:layout_below="@+id/include"
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:tabGravity="fill"
+            app:tabIndicatorColor="#FFF"
+            app:tabIndicatorHeight="05dp"
+            app:tabMode="fixed"
+            app:tabSelectedTextColor="#FFF"
+            app:tabTextColor="@color/white"
+            android:background="@color/colorPrimary"/>
+
+
+        <android.support.v4.view.ViewPager
+            android:layout_below="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/viewpager"/>
+    </RelativeLayout>
+</android.support.v4.widget.NestedScrollView>

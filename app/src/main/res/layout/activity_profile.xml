@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.itg.jobcardmanagement.profile.ProfileActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/toolbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:contentScrim="?attr/colorPrimary">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="none"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/toolbar"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginStart="30dp">
+
+
+                <TextView
+                    android:id="@+id/txt_customerName"
+                    style="@style/TextViewprofileStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="60dp"
+                    android:text=" Customer Name" />
+
+                <TextView
+                    android:id="@+id/txt_email"
+                    style="@style/TextViewStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txt_customerName"
+                    android:layout_marginTop="06dp"
+                    android:autoLink="email"
+                    android:text="name@gmail.com"
+                    android:textColorLink="@color/white" />
+
+                <TextView
+                    android:id="@+id/txt_contact"
+                    style="@style/TextViewStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txt_email"
+                    android:layout_marginTop="06dp"
+                    android:gravity="center"
+                    android:text="9823778532"
+                    android:layout_marginBottom="20dp"
+                    android:textColorLink="@color/white" />
+
+                <TextView
+                    style="@style/TextViewSmallStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/txt_customerName"
+                    android:layout_alignStart="@+id/txt_customerName"
+                    android:layout_below="@+id/txt_contact"
+                    android:layout_marginTop="30dp"
+                    android:drawableLeft="@drawable/ic_settings_black_24dp"
+                    android:drawablePadding="10dp"
+                    android:text="Edit profile"
+                    android:visibility="gone" />
+
+
+
+            </RelativeLayout>
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <include layout="@layout/content_profile" />
+
+    <ImageView
+        android:id="@+id/fab"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_margin="@dimen/fab_margin"
+        android:elevation="08dp"
+        app:layout_anchor="@id/app_bar"
+        app:layout_anchorGravity="bottom|end"
+        app:srcCompat="@drawable/bg_profile" />
+
+</android.support.design.widget.CoordinatorLayout>

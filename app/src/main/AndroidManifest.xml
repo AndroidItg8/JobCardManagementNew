@@ -14,24 +14,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".home.MainActivity">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
-        <activity
-            android:name=".intro.IntroActivity"
-            android:label="Job Card M"
-            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".intro.IntroActivity"
+            android:label="Job Card M"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".registration.activity.LoginActivity"
             android:label="@string/title_activity_login"
@@ -47,7 +39,24 @@
         <activity
             android:name=".setting.MainSettingActivity"
             android:label="@string/title_activity_main_setting"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".profile.ProfileActivity"
+            android:label="@string/title_activity_profile"
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
+        <activity
+            android:name=".service.ServiceDetailsActivity"
+            android:label="@string/title_activity_service_details"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".home.HomeActivity"
+            android:label="@string/title_activity_home"
+            android:theme="@style/AppTheme.NoActionBar">
+
+
+        </activity>
     </application>
 
 </manifest>
