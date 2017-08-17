@@ -64,6 +64,7 @@ public class LoginPresenterImpTest {
     @Test
     public void shouldShowYayOnSucessfulLogin() throws Exception {
 //        when(view.getUsername()).thenReturn(USERNAME);
+//        presenter.onUsernameSubmit(CORRECT_MOBILE_NUMBER);
         presenter.onUsernameSubmit(CORRECT_MOBILE_NUMBER);
         verify(view).onUserFound("1","www");
     }

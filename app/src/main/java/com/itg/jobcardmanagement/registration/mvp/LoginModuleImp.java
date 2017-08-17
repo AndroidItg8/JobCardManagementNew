@@ -7,6 +7,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.itg.jobcardmanagement.R;
 import com.itg.jobcardmanagement.common.MyApplication;
 import com.itg.jobcardmanagement.common.NetworkCall;
 
@@ -108,6 +110,11 @@ public class LoginModuleImp implements LoginRegMVP.LoginModule {
             );
             MyApplication.getInstance().addToRequestQueue(postRequest);
         }
+    }
+
+
+    public void onGmailSigninClicked(String tokenId){
+
     }
 
     @Override

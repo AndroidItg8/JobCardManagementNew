@@ -47,4 +47,35 @@ public class LoginRegMVP {
         void onRegFail(String message);
         void onRegSuccess(Object module);
     }
+
+    public interface PasswordView{
+        void onPasswordEmpty();
+        void onPasswordInvalid();
+        void onProgressShow();
+        void onPogressHide();
+        String getPassword();
+        void onSuccessful(Object o);
+
+        void onCallFail(String message);
+
+        String getUsername();
+    }
+
+    public interface PasswordPresenter{
+        void onResume();
+        void onPause();
+        void onNextButtonClicked();
+    }
+
+    public interface PasswordModule{
+        void onDestroy();
+        void onNextButtonSubmit(String username, String pass,PasswordListener listener);
+    }
+
+    public interface PasswordListener{
+        void onSuccess(Object object);
+        void onFail(String message);
+        void onIncorrectPassword();
+    }
+
 }

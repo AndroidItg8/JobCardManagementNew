@@ -62,6 +62,7 @@ public class RegistrationFragment extends Fragment implements View.OnClickListen
 
     private RegMVP.RegPresenter presenter;
     private StringBuilder sb;
+    OnRegistrationListner listener;
 
     public RegistrationFragment() {
         // Required empty public constructor
@@ -110,6 +111,7 @@ public class RegistrationFragment extends Fragment implements View.OnClickListen
     public void onAttach(Context context) {
         super.onAttach(context);
         presenter=new RegPresenterImp(this);
+        listener= (OnRegistrationListner) context;
     }
 
     @Override
@@ -174,7 +176,11 @@ public class RegistrationFragment extends Fragment implements View.OnClickListen
 
     @Override
     public void onRegistrationSuccessful(Object... obj) {
-
+        if(obj.length>0){
+            if(listener!=null){
+                listener.onRegistrationDone();
+            }
+        }
     }
 
     @Override
@@ -204,7 +210,7 @@ public class RegistrationFragment extends Fragment implements View.OnClickListen
     }
 
     public interface OnRegistrationListner{
-
+            void onRegistrationDone();
     }
 
 

@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "616218008105",
+    "firebase_url": "https://jobcardmanagement.firebaseio.com",
+    "project_id": "jobcardmanagement",
+    "storage_bucket": "jobcardmanagement.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:616218008105:android:8b7157988c2ac46c",
+        "android_client_info": {
+          "package_name": "com.itg.jobcardmanagement"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "616218008105-ddq6urs25bt7kj07qb2f0i93cbbgqmad.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.itg.jobcardmanagement",
+            "certificate_hash": "ec2d8f9d0fc1fef28714d0f1ffb98f2835dad02c"
+          }
+        },
+        {
+          "client_id": "616218008105-5igt5ncpb507ag07f7af43rlccdnn08e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-K8qQhaY3ej3niK7UYMcc9oAl8GL3oew"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "616218008105-5igt5ncpb507ag07f7af43rlccdnn08e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

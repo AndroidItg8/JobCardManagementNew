@@ -50,5 +50,7 @@
     <color name="colorRed">#480a07</color>
     <color name="colorGray">#afaeae</color>
     <color name="colorTransparent">#00cecece</color>
+    <color name="QRCodeBlackColor">#000000</color>
+    <color name="QRCodeWhiteColor">#ffffff</color>
 
 </resources>

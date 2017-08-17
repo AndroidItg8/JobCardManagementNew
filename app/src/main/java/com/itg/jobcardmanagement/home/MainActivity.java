@@ -9,13 +9,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.itg.jobcardmanagement.R;
 import com.itg.jobcardmanagement.common.CommonMethod;
+import com.itg.jobcardmanagement.common.Prefs;
 import com.itg.jobcardmanagement.home.adapter.HomeViewPagerAdapter;
 import com.itg.jobcardmanagement.home.fragment.DocumentFragmnet;
 import com.itg.jobcardmanagement.home.fragment.FeedBackFragment;
 import com.itg.jobcardmanagement.home.fragment.ServiceFragment;
+import com.itg.jobcardmanagement.qr.QRCodeGeneratorActivity;
 import com.itg.jobcardmanagement.registration.CustomerRegistrationActivity;
+import com.itg.jobcardmanagement.registration.activity.LoginActivity;
 import com.itg.jobcardmanagement.setting.SettingActivity;
 
 import butterknife.BindView;
@@ -70,11 +74,21 @@ public class MainActivity extends AppCompatActivity {
                 callSettingActivity(intent);
                 break;
             case R.id.action_qr:
-                intent.putExtra(CommonMethod.FROMQR, " ");
-                callSettingActivity(intent);
+                Intent intent=new Intent(this, QRCodeGeneratorActivity.class);
+                startActivity(intent);
                 break;
+            case R.id.action_logout:
+                logoutFromEverywhere();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void logoutFromEverywhere() {
+        Prefs.remove(CommonMethod.USERNAME);
+        Prefs.remove(CommonMethod.USER_EMAIL_OR_PHONE_NUMBER);
+        FirebaseAuth.getInstance().signOut();
+        startActivity(new Intent(this, LoginActivity.class));
+        finish();
     }
 
     private void callSettingActivity(Intent intent) {

@@ -12,7 +12,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:baselineAligned="false">
+        android:baselineAligned="false"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/in_fName"
@@ -29,7 +32,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/first_name"
             android:textSize="24sp"
-            android:inputType="textPassword"
+            android:inputType="text"
             android:nextFocusUp="@id/edt_email"
             android:nextFocusLeft="@id/edt_email"
             />
@@ -50,7 +53,7 @@
             android:hint="@string/last_name"
             android:textSize="24sp"
 
-            android:inputType="textPassword"
+            android:inputType="text"
             android:nextFocusUp="@id/edt_email"
             android:nextFocusLeft="@id/edt_email"
             />
@@ -72,7 +75,6 @@
             android:layout_height="wrap_content"
             android:hint="@string/password"
             android:textSize="24sp"
-
             android:inputType="textPassword"
             android:nextFocusUp="@id/edt_email"
             android:nextFocusLeft="@id/edt_email"
@@ -84,7 +86,6 @@
         android:layout_below="@+id/in_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="24dp"

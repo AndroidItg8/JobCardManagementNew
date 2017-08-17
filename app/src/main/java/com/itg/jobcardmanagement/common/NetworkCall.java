@@ -43,4 +43,31 @@ public class NetworkCall implements NetworkListener {
     public String register() {
         return BASE_URL + REGISTRATION;
     }
+
+
+    /**
+     * PARAM:
+     * username:7eb8c366-4ba0-4e66-a02f-9543aa569f7e
+     grant_type:password
+     password:123456
+     * <br> </br>
+     * RESPONSE: <br>
+     * {
+     "access_token": "",
+     "token_type": "bearer",
+     "expires_in": 1209599,
+     "userName": "raj@gmail.com",
+     ".issued": "Wed, 09 Aug 2017 11:07:11 GMT",
+     ".expires": "Wed, 23 Aug 2017 11:07:11 GMT"
+     }
+     <br />
+     Invalid Response:
+     <br />
+     {
+     "error": "invalid_grant",
+     "error_description": "The user name or password is incorrect."
+     }
+     */
+
+    public String verifyUser() { return BASE_URL + VERIFY;}
 }

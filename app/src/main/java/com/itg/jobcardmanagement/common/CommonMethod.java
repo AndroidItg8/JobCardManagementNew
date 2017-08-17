@@ -14,4 +14,5 @@ public class CommonMethod {
 
     public static final String TYPE = "TYPE";
     public static final String REG_REQ = "reg_req";
+    public static final String USER_EMAIL_OR_PHONE_NUMBER = "USER_EMAIL_OR_PHONE_NUMBER";
 }

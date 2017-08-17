@@ -1,5 +1,6 @@
 package com.itg.jobcardmanagement.registration;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -13,13 +14,14 @@ import android.widget.TextView;
 
 import com.itg.jobcardmanagement.R;
 import com.itg.jobcardmanagement.common.CommonMethod;
+import com.itg.jobcardmanagement.home.MainActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 import static com.itg.jobcardmanagement.registration.activity.LoginActivity.REG;
 
-public class PasswordActivity extends AppCompatActivity {
+public class PasswordActivity extends AppCompatActivity implements RegistrationFragment.OnRegistrationListner {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -65,5 +67,15 @@ public class PasswordActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onRegistrationDone() {
+        startHomeActivity();
+    }
 
+    private void startHomeActivity() {
+        Intent intent=new Intent(this,MainActivity.class);
+        startActivity(intent);
+        setResult(RESULT_OK);
+        finish();
+    }
 }
