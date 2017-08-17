@@ -119,6 +119,7 @@ public class QRCodeGeneratorActivity extends AppCompatActivity {
 //
 //                pixels[offset + x] = bitMatrix.get(x, y) ?
 //                        getResources().getColor(R.color.colorBlack):getResources().getColor(R.color.white);
+//            }
 //        }
 //        Bitmap bitmap = Bitmap.createBitmap(bitMatrixWidth, bitMatrixHeight, Bitmap.Config.ARGB_4444);
 //
