@@ -72,4 +72,86 @@ public class NetworkCall implements NetworkListener {
     public String verifyUser() {
         return BASE_URL + VERIFY;
     }
+
+
+//    {
+//        "User": {
+//        "pkid": 0,
+//                "userid": "e99b9059-e779-4359-afc8-ef798f406f8b",
+//                "FirstName": "Raj",
+//                "LastName": "Verma",
+//                "username": null,
+//                "address": "Manewada ",
+//                "mobile": "5645646614",
+//                "emailid": "Raj@gmail.com",
+//                "mid": null,
+//                "mdate": null,
+//                "profilePic": null
+//    },
+//        "Vehicle": {
+//        "pkid": 0,
+//                "UserId": null,
+//                "VehicleName": "Audi A4",
+//                "VehicleNo": "51541",
+//                "ChessesNo": null,
+//                "series": "A4",
+//                "model": "56464",
+//                "VIN": "546",
+//                "EngineNo": "546",
+//                "Color": null,
+//                "DealerCode": null,
+//                "RegiNumber": "56",
+//                "RCNumber": null,
+//                "CurrentDate": null,
+//                "mid": null,
+//                "Mdate": null,
+//                "cid": null
+//    },
+//        "servicing": {
+//        "pkid": 0,
+//                "UserId": null,
+//                "VehicleId": null,
+//                "ServicingDate": null,
+//                "Servicingplace": null,
+//                "servicingPerson": null,
+//                "job_type": null,
+//                "appointeddate": null,
+//                "ariveddate": null,
+//                "FOdometerereading": null,
+//                "returnoldpar": null,
+//                "washing": null,
+//                "delivery": null,
+//                "remark": null,
+//                "customer_request": null,
+//                "documentdatetime": null,
+//                "TotalCharges": null
+//    }
+//    }
+
+    public String checkVehicle() {
+        return BASE_URL + VEHICLE_CHECK;
+    }
+
+
+    /***
+     *
+     * {
+     "status": "Data Save Failed",
+     "flag": false
+     }
+     **/
+    public String userProfileSave() {
+        return BASE_URL + USER_PROFILE ;
+    }
+
+    /***
+     *
+     * {
+     "carid": "sdf",
+     "flag": false
+     }
+     **/
+    public String vehicleSave() {
+        return BASE_URL + VEHICLE_SAVE ;
+    }
 }

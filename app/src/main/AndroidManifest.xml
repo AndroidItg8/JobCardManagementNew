@@ -3,21 +3,18 @@
     package="com.itg.jobcardmanagement">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-
     <application
         android:name=".common.MyApplication"
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".home.MainActivity">
-
 
             <!-- <intent-filter> -->
             <!-- <action android:name="android.intent.action.MAIN" /> -->
@@ -30,17 +27,16 @@
             android:name=".intro.IntroActivity"
             android:label="Job Card M"
             android:theme="@style/AppTheme.NoActionBar">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--<activity-->
-            <!--android:name=".intro.IntroActivity"-->
-            <!--android:label="Job Card M"-->
-            <!--android:theme="@style/AppTheme.NoActionBar" />-->
+        <!-- <activity -->
+        <!-- android:name=".intro.IntroActivity" -->
+        <!-- android:label="Job Card M" -->
+        <!-- android:theme="@style/AppTheme.NoActionBar" /> -->
         <activity
             android:name=".registration.activity.LoginActivity"
             android:label="@string/title_activity_login"
@@ -53,9 +49,9 @@
             android:name=".registration.PasswordActivity"
             android:label="@string/title_activity_password"
             android:theme="@style/AppTheme.NoActionBar" />
-
-        <activity android:name=".qr.QRCodeGeneratorActivity"></activity>
-
+        <activity
+            android:name=".qr.QRCodeGeneratorActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".setting.MainSettingActivity"
             android:label="@string/title_activity_main_setting"
@@ -63,9 +59,7 @@
         <activity
             android:name=".profile.ProfileActivity"
             android:label="@string/title_activity_profile"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".service.ServiceDetailsActivity"
             android:label="@string/title_activity_service_details"
@@ -73,13 +67,14 @@
         <activity
             android:name=".home.HomeActivity"
             android:label="@string/title_activity_home"
-            android:theme="@style/AppTheme.NoActionBar">
-
-
-        </activity>
-
-        <activity android:name=".setting.SettingActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".setting.SettingActivity"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".qr.QRCodeScanActivity"
+            android:label="@string/title_activity_qrcode_scan"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

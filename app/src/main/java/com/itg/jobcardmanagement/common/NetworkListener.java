@@ -9,4 +9,7 @@ public interface NetworkListener {
     String USER_LOGIN = "/Account/UserLogin";
     String REGISTRATION = "/api/CustomerApp/Register";
     String VERIFY = "/Token";
+    String VEHICLE_CHECK ="/api/CustomerApp/CarAvailability";
+    String USER_PROFILE="/api/CustomerApp/UserProfile";
+    String VEHICLE_SAVE="/api/CustomerApp/VehicleSave";
 }

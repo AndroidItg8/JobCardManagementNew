@@ -1,6 +1,8 @@
 package com.itg.jobcardmanagement.registration.mvp;
 
 import com.itg.jobcardmanagement.common.BaseWeakPresenter;
+import com.itg.jobcardmanagement.common.CommonMethod;
+import com.itg.jobcardmanagement.common.Prefs;
 
 /**
  * Created by itg_Android on 8/5/2017.
@@ -28,13 +30,15 @@ public class LoginPresenterImp extends BaseWeakPresenter implements LoginRegMVP.
             int type = checkTypeofUsername(username);
             if (type > 0) {
                 getLoginView().showProgress();
-                module.onUsernameSubmit(username,type);
+                Prefs.putInt(CommonMethod.USERNAME_TYPE, type == EMAIL ? EMAIL : MOBILE);
+                Prefs.putString(CommonMethod.USERNAME_INSERTED,username);
+                module.onUsernameSubmit(username, type);
             }
         }
     }
 
     private int checkTypeofUsername(String username) {
-        if(username.isEmpty() && hasView()){
+        if (username.isEmpty() && hasView()) {
             getLoginView().onUsernameFieldEmpty();
         }
         int type = -1;
@@ -95,22 +99,22 @@ public class LoginPresenterImp extends BaseWeakPresenter implements LoginRegMVP.
 
     @Override
     public void onUserAvaiable(String userId, String profilePicUrl) {
-        if(hasView()){
+        if (hasView()) {
             getLoginView().hideProgress();
-            getLoginView().onUserFound(userId,profilePicUrl);
+            getLoginView().onUserFound(userId, profilePicUrl);
         }
     }
 
     @Override
     public void onUserFail(String message) {
-        if(hasView()) {
+        if (hasView()) {
             getLoginView().hideProgress();
         }
     }
 
     @Override
     public void onError(String err) {
-        if(hasView()) {
+        if (hasView()) {
             getLoginView().hideProgress();
         }
     }
@@ -119,7 +123,7 @@ public class LoginPresenterImp extends BaseWeakPresenter implements LoginRegMVP.
     public void onRegFail(String message) {
         if (hasView()) {
             getLoginView().onVerificationFailed(message);
-            if(hasView()) {
+            if (hasView()) {
                 getLoginView().hideProgress();
             }
         }
@@ -127,8 +131,8 @@ public class LoginPresenterImp extends BaseWeakPresenter implements LoginRegMVP.
 
     @Override
     public void onRegSuccess(Object module) {
-        if(hasView()){
-            getLoginView().onUserFound("1","www");
+        if (hasView()) {
+            getLoginView().onUserFound("1", "www");
         }
     }
 

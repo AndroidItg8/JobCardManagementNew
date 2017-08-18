@@ -1,10 +1,9 @@
 package com.itg.jobcardmanagement.registration.fragment;
 
 
+import android.content.Context;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.design.widget.TextInputEditText;
-import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -13,8 +12,11 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.itg.jobcardmanagement.R;
+import com.itg.jobcardmanagement.common.BaseFragment;
+import com.itg.jobcardmanagement.common.CommonMethod;
 import com.itg.jobcardmanagement.registration.CustomerRegistrationActivity;
-import com.itg.jobcardmanagement.registration.model.RegistrationModel;
+import com.itg.jobcardmanagement.registration.model.UserVehicleDetailModel;
+import com.itg.jobcardmanagement.registration.model.Vehicle;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -25,7 +27,7 @@ import butterknife.Unbinder;
  * Use the {@link CustomerVehicleInfoFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CustomerVehicleInfoFragment extends Fragment implements View.OnClickListener {
+public class CustomerVehicleInfoFragment extends BaseFragment implements View.OnClickListener, CommonMethod.NextButtonClickedVehicleListener{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -51,7 +53,7 @@ public class CustomerVehicleInfoFragment extends Fragment implements View.OnClic
     Unbinder unbinder;
 
     // TODO: Rename and change types of parameters
-    private RegistrationModel model;
+    private UserVehicleDetailModel model;
 
 
     public CustomerVehicleInfoFragment() {
@@ -61,12 +63,13 @@ public class CustomerVehicleInfoFragment extends Fragment implements View.OnClic
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
+     * <p>
+     * <<<<<<< HEAD
      *
-<<<<<<< HEAD
      * @return A new instance of fragment CustomerVehicleInfoFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static CustomerVehicleInfoFragment newInstance(RegistrationModel model) {
+    public static CustomerVehicleInfoFragment newInstance(UserVehicleDetailModel model) {
         CustomerVehicleInfoFragment fragment = new CustomerVehicleInfoFragment();
         Bundle args = new Bundle();
         args.putParcelable(ARG_PARAM1, model);
@@ -89,29 +92,37 @@ public class CustomerVehicleInfoFragment extends Fragment implements View.OnClic
         View view = inflater.inflate(R.layout.fragment_customer_vehicle_info, container, false);
         unbinder = ButterKnife.bind(this, view);
         edtSaleDate.setOnClickListener(this);
-        prepareData();
         setModelToWidget();
         return view;
     }
 
     private void setModelToWidget() {
-        if(model != null)
-        {
-           edtSeries.setText(model.getCarSeries());
-           edtColorCode.setText(model.getCarColorCode());
-           edtModelCode.setText(model.getCarModelCode());
-           edtVinNo.setText(model.getCarVinNumber());
-           edtSellingDealer.setText(model.getCarSaleDate());
-           edtSellingDealer.setText(model.getCarDelearName());
+        if (model != null) {
+            Vehicle vehicle = model.getVehicle();
+            if (vehicle != null) {
+                edtSeries.setText(checkNull(vehicle.getSeries()));
+                edtColorCode.setText(checkNull(vehicle.getColor()));
+                edtModelCode.setText(checkNull(vehicle.getModel()));
+                edtVinNo.setText(checkNull(vehicle.getVIN()));
+//                edtSellingDealer.setText(model.getCarSaleDate());
+            }
         }
     }
 
     private void prepareData() {
-        if(validate())
-        {
-            ((CustomerRegistrationActivity)getActivity()).sendVehicleDataToActivity(edtSeries.getText().toString(), edtModelCode.getText().toString(), edtColorCode.getText().toString(),edtSaleDate.getText().toString(),edtVinNo.getText().toString(),edtSellingDealer.getText().toString());
-        }else
-        {
+        if (validate()) {
+            Vehicle vehicle = new Vehicle();
+            vehicle.setSeries(edtSeries.getText().toString());
+            vehicle.setModel(edtModelCode.getText().toString());
+            vehicle.setVIN(edtVinNo.getText().toString());
+            vehicle.setColor(edtColorCode.getText().toString());
+            vehicle.setDealerCode(edtSellingDealer.getText().toString());
+            if(model!=null){
+                vehicle.setPkid(model.getVehicle().getPkid());
+            }
+            ((CustomerRegistrationActivity) getActivity()).sendVehicleDataToActivity(vehicle);
+
+        } else {
             Toast.makeText(getActivity(), "Field are empty", Toast.LENGTH_SHORT).show();
         }
 
@@ -128,25 +139,28 @@ public class CustomerVehicleInfoFragment extends Fragment implements View.OnClic
     private boolean validate() {
         boolean isValidate = true;
 
-        if(TextUtils.isEmpty(edtSeries.getText().toString())) {
+        if (TextUtils.isEmpty(edtSeries.getText().toString())) {
             edtSaleDate.setError("Field is empty");
             isValidate = false;
-        } if(TextUtils.isEmpty(edtModelCode.getText().toString())) {
+        }
+        if (TextUtils.isEmpty(edtModelCode.getText().toString())) {
             edtModelCode.setError("Field is empty");
             isValidate = false;
         }
-        if(TextUtils.isEmpty(edtColorCode.getText().toString())) {
+        if (TextUtils.isEmpty(edtColorCode.getText().toString())) {
             edtColorCode.setError("Field is empty");
             isValidate = false;
         }
 
-        if(TextUtils.isEmpty(edtSaleDate.getText().toString())) {
+        if (TextUtils.isEmpty(edtSaleDate.getText().toString())) {
             edtSaleDate.setError("Field is empty");
             isValidate = false;
-        }if(TextUtils.isEmpty(edtSellingDealer.getText().toString())) {
+        }
+        if (TextUtils.isEmpty(edtSellingDealer.getText().toString())) {
             edtSellingDealer.setError("Field is empty");
             isValidate = false;
-        }if(TextUtils.isEmpty(edtVinNo.getText().toString())) {
+        }
+        if (TextUtils.isEmpty(edtVinNo.getText().toString())) {
             edtVinNo.setError("Field is empty");
             isValidate = false;
         }
@@ -157,14 +171,24 @@ public class CustomerVehicleInfoFragment extends Fragment implements View.OnClic
 
     @Override
     public void onClick(View v) {
-        switch (v.getId())
-        {
+        switch (v.getId()) {
             case R.id.edt_sale_date:
                 OpenDateDailogue();
         }
     }
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        ((CustomerRegistrationActivity) context).setListener(this);
+    }
+
     private void OpenDateDailogue() {
 
+    }
+
+    @Override
+    public void onNextButtonClicked() {
+        prepareData();
     }
 }

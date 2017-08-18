@@ -137,5 +137,7 @@
     <string name="action_settings">Profile</string>
     <string name="action_logout">Logout</string>
     <string name="chesis_number">Enter Chassis Number</string>
+    <string name="title_activity_qrcode_scan">QRCodeScanActivity</string>
+    <string name="action_qr_scan">Scan QR</string>
 
 </resources>

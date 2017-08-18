@@ -110,6 +110,13 @@ public class LoginActivity extends AppCompatActivity implements LoginRegMVP.Logi
             }
         });
 
+       checkUserHasRegistered();
+
+        mAuth = FirebaseAuth.getInstance();
+        presenter = new LoginPresenterImp(this);
+    }
+
+    private void checkUserHasRegistered() {
         if(Prefs.contains(CommonMethod.USERNAME)){
             if(Prefs.contains(CommonMethod.USER_PROFILE_UPDATED)) {
                 startActivity(new Intent(this, MainActivity.class));
@@ -118,9 +125,6 @@ public class LoginActivity extends AppCompatActivity implements LoginRegMVP.Logi
             }
             finish();
         }
-
-        mAuth = FirebaseAuth.getInstance();
-        presenter = new LoginPresenterImp(this);
     }
 
     @OnClick({R.id.btn_next, R.id.txt_signup, R.id.btn_gplus})
@@ -130,6 +134,8 @@ public class LoginActivity extends AppCompatActivity implements LoginRegMVP.Logi
             presenter.onUsernameSubmit(edtEmail.getText().toString());
         } else if (v.getId() == R.id.btn_gplus) {
             startGPlusLogin();
+        }else if(v.getId() ==R.id.txt_signup){
+            startRegActivity(getUsername(), "", REG);
         }
     }
 
@@ -249,7 +255,7 @@ public class LoginActivity extends AppCompatActivity implements LoginRegMVP.Logi
 
     @Override
     public void onVerificationFailed(String message) {
-        startRegActivity(getUsername(), message, REG);
+        Snackbar.make(inEmail,"User not avaiable. Please click signup to register.",Snackbar.LENGTH_LONG).show();
     }
 
     private void startRegActivity(String username, String profilePic, int type) {

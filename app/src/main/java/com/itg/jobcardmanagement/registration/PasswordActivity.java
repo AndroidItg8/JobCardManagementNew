@@ -88,9 +88,19 @@ public class PasswordActivity extends AppCompatActivity implements RegistrationF
     }
 
     private void startHomeActivity() {
-        Intent intent=new Intent(this,MainActivity.class);
-        startActivity(intent);
+      checkUserHasRegistered();
         setResult(RESULT_OK);
         finish();
+    }
+
+    private void checkUserHasRegistered() {
+        if(Prefs.contains(CommonMethod.USERNAME)){
+            if(Prefs.contains(CommonMethod.USER_PROFILE_UPDATED)) {
+                startActivity(new Intent(this, MainActivity.class));
+            }else {
+                startActivity(new Intent(this, CustomerRegistrationActivity.class));
+            }
+            finish();
+        }
     }
 }

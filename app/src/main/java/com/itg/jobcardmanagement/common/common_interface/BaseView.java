@@ -9,4 +9,6 @@ public interface BaseView {
     void onNetworkAvailable();
     void onShowProgress();
     void onHideProgress();
+
+
 }

@@ -34,6 +34,7 @@ import com.itg.jobcardmanagement.home.fragment.ServiceFragment;
 import com.itg.jobcardmanagement.home.fragment.VehicleListDialogueFragment;
 import com.itg.jobcardmanagement.intro.IntroActivity;
 import com.itg.jobcardmanagement.qr.QRCodeGeneratorActivity;
+import com.itg.jobcardmanagement.qr.QRCodeScanActivity;
 import com.itg.jobcardmanagement.registration.CustomerRegistrationActivity;
 import com.itg.jobcardmanagement.registration.activity.LoginActivity;
 import com.itg.jobcardmanagement.setting.SettingActivity;
@@ -158,7 +159,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.action_logout:
                 logoutFromEverywhere();
-
+                break;
+            case R.id.action_qr_scan:
+                startActivity(new Intent(this, QRCodeScanActivity.class));
 //                intent.putExtra(CommonMethod.FROMQR, " ");
 //                callSettingActivity(intent);
                 break;

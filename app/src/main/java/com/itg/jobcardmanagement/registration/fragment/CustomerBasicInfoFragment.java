@@ -15,8 +15,11 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.itg.jobcardmanagement.R;
+import com.itg.jobcardmanagement.common.BaseFragment;
+import com.itg.jobcardmanagement.common.CommonMethod;
 import com.itg.jobcardmanagement.registration.CustomerRegistrationActivity;
-import com.itg.jobcardmanagement.registration.model.RegistrationModel;
+import com.itg.jobcardmanagement.registration.model.User;
+import com.itg.jobcardmanagement.registration.model.UserVehicleDetailModel;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -28,7 +31,7 @@ import butterknife.Unbinder;
  * Use the {@link CustomerBasicInfoFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CustomerBasicInfoFragment extends Fragment {
+public class CustomerBasicInfoFragment extends BaseFragment implements CommonMethod.NextButtonClickProfileListner {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -61,9 +64,11 @@ public class CustomerBasicInfoFragment extends Fragment {
     TextInputLayout inputState;
     @BindView(R.id.input_email)
     TextInputLayout inputEmail;
+    @BindView(R.id.edt_emai)
+    TextInputEditText edtEmai;
     private String mParam1;
     private String mParam2;
-    private RegistrationModel model;
+    private UserVehicleDetailModel model;
     private Context mContext;
     private FragmentManager fm;
 
@@ -81,10 +86,11 @@ public class CustomerBasicInfoFragment extends Fragment {
      * @return A new instance of fragment CustomerBasicInfoFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static CustomerBasicInfoFragment newInstance(RegistrationModel model) {
+    public static CustomerBasicInfoFragment newInstance(UserVehicleDetailModel model) {
         CustomerBasicInfoFragment fragment = new CustomerBasicInfoFragment();
         Bundle args = new Bundle();
         args.putParcelable(ARG_PARAM1, model);
+        fragment.setArguments(args);
         return fragment;
     }
 
@@ -106,19 +112,22 @@ public class CustomerBasicInfoFragment extends Fragment {
                 InputType.TYPE_TEXT_FLAG_MULTI_LINE |
                 InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
         setModelToWidget();
-        checkRegistrationModel();
 
 
         return view;
     }
 
     private void checkRegistrationModel() {
-        if (model != null) {
-            if (validate()) {
-                ((CustomerRegistrationActivity) getActivity()).sendBaiscInfoToActivity(edtName.getText().toString(), edtLName.getText().toString(), edtContact.getText().toString(), edtAddress.getText().toString(), edtCity.getText().toString(), edtState.getText().toString());
-            } else {
-                Toast.makeText(getActivity(), "Field are not match", Toast.LENGTH_SHORT).show();
-            }
+        if (validate()) {
+            User user = new User();
+            user.setFirstName(edtName.getText().toString());
+            user.setLastName(edtLName.getText().toString());
+            user.setMobile(edtContact.getText().toString());
+            user.setAddress(edtAddress.getText().toString());
+            user.setEmailid(edtEmai.getText().toString());
+            ((CustomerRegistrationActivity) getActivity()).sendBaiscInfoToActivity(user);
+        } else {
+            Toast.makeText(getActivity(), "Please fill properly", Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -167,27 +176,19 @@ public class CustomerBasicInfoFragment extends Fragment {
 
     private void setModelToWidget() {
         if (model != null) {
-
-            edtName.setText(model.getFirstName());
-            edtLName.setText(model.getLastName());
-            edtAddress.setText(model.getCustomerAddress());
-            edtState.setText(model.getCustomerState());
-            edtCity.setText(model.getCustomerCity());
-            edtContact.setText(model.getContactNumber());
-
-            checkPossibilites();
+            User user = model.getUser();
+            if (user != null) {
+                edtName.setText(checkNull(user.getFirstName()));
+                edtLName.setText(checkNull(user.getLastName()));
+                edtAddress.setText(checkNull(user.getAddress()));
+                edtEmai.setText(checkNull(user.getEmailid()));
+//                edtState.setText(checkNull(user.get());
+//                edtCity.setText(model.getCustomerCity());
+                edtContact.setText(checkNull(user.getMobile()));
+            }
         }
 
 
-    }
-
-    private void checkPossibilites() {
-//        if (!model.getContactNumber().equalsIgnoreCase(edtContact.getText().toString())
-//                && !model.getCustomerEmail().equalsIgnoreCase(edtEmail.getText().toString())) {
-//            if (TextUtils.isEmpty(model.getCustomerTransfertFilePath())) {
-//                openQueryForm();
-//            }
-//        }
     }
 
 
@@ -240,7 +241,7 @@ public class CustomerBasicInfoFragment extends Fragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         this.mContext = context;
-
+        ((CustomerRegistrationActivity) context).setListener(this);
     }
 
     @Override
@@ -249,5 +250,10 @@ public class CustomerBasicInfoFragment extends Fragment {
         if (mContext != null) {
             mContext = null;
         }
+    }
+
+    @Override
+    public void onNextButtonClicked() {
+        checkRegistrationModel();
     }
 }

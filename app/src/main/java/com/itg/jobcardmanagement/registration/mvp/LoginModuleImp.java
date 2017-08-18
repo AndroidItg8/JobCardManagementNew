@@ -18,6 +18,8 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.itg.jobcardmanagement.registration.mvp.LoginPresenterImp.EMAIL;
+
 /**
  * Created by itg_Android on 8/5/2017.
  */

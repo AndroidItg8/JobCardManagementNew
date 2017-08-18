@@ -27,7 +27,9 @@
         <item name="android:textColorHint">@color/colorGray</item>
         <item name="android:textStyle">normal</item>
 
-    </style> <style name="TextViewBottomStyle" parent="Theme.AppCompat.Light.DarkActionBar">
+    </style>
+
+    <style name="TextViewBottomStyle" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="android:textSize">@dimen/textViewSize</item>
         <item name="android:textColorHint">@color/colorPrimary</item>
         <item name="android:textColor">@color/colorPrimary</item>
@@ -63,6 +65,7 @@
         <item name="android:layout_margin">05dp</item>
 
     </style>
+
     <style name="TextViewServiceDetailsStyle" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="android:textSize">@dimen/textViewSizeSmall</item>
         <item name="android:textColorHint">@color/whites</item>
@@ -72,6 +75,7 @@
         <item name="android:padding">05dp</item>
 
     </style>
+
     <style name="TextViewServiceDescriptionsStyle" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="android:textSize">@dimen/textViewSizeSmall</item>
         <item name="android:textColorHint">@color/colorGray</item>
@@ -125,7 +129,6 @@
         <item name="colorControlNormal">@color/colorPrimary</item>
         <item name="colorControlActivated">@color/colorAccent</item>
     </style>
-
 
 
     <style name="ratingStyle" parent="Theme.AppCompat">

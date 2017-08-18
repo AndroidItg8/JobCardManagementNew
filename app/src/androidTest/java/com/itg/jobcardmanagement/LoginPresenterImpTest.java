@@ -1,6 +1,5 @@
 package com.itg.jobcardmanagement;
 
-<<<<<<< HEAD
 import com.itg.jobcardmanagement.registration.activity.LoginActivity;
 import com.itg.jobcardmanagement.registration.mvp.LoginModuleImp;
 import com.itg.jobcardmanagement.registration.mvp.LoginPresenterImp;
@@ -15,21 +14,11 @@ import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import static org.mockito.Mockito.verify;
-=======
-import com.itg.jobcardmanagement.registration.mvp.LoginModuleImp;
-import com.itg.jobcardmanagement.registration.mvp.LoginRegMVP;
 
-import org.junit.Before;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-
->>>>>>> refs/remotes/origin/ayeshaa
-import static org.mockito.Mockito.when;
 
 /**
  * Created by itg_Android on 8/5/2017.
  */
-<<<<<<< HEAD
 @RunWith(MockitoJUnitRunner.class)
 public class LoginPresenterImpTest {
     private static final String USERNAME = "";
@@ -37,12 +26,6 @@ public class LoginPresenterImpTest {
     private static final java.lang.String WRONG_EMAIL_ADDRESS = "swap";
     private static final String CORRECT_MOBILE_NUMBER = "9890410668";
 
-=======
-
-public class LoginPresenterImpTest {
-    private static final String USERNAME = "9890410668";
-    @Mock
->>>>>>> refs/remotes/origin/ayeshaa
     LoginRegMVP.LoginPresenter presenter;
 
     @Mock
@@ -52,7 +35,6 @@ public class LoginPresenterImpTest {
     LoginRegMVP.LoginListener listener;
 
     @Before
-<<<<<<< HEAD
     public void setUp() throws Exception {
         presenter=new LoginPresenterImp(view);
 
@@ -90,10 +72,4 @@ public class LoginPresenterImpTest {
 
 
 
-=======
-    public void setUp() throws Exception{
-        MockitoAnnotations.initMocks(this);
-//        when(presenter.onUsernameSubmit(USERNAME)).thenReturn()
-    }
->>>>>>> refs/remotes/origin/ayeshaa
 }

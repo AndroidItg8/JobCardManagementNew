@@ -8,4 +8,6 @@ public interface BaseModule {
     void onPause();
     void onResume();
     void onDestroy();
+
+
 }
