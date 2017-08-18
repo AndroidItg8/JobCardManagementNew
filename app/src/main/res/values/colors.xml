@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryText">#b13f51b5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
@@ -21,7 +22,8 @@
     <color name="dot_light_screen2">#8cf9eb</color>
     <color name="dot_light_screen3">#93c6fd</color>
     <color name="dot_light_screen4">#e4b5fc</color>
-    <color name="white">#ffffff</color>
+    <color name="white">#bcbaba</color>
+    <color name="whites">#FFF</color>
     <color name="bg_g_plus">#DC4E41</color>
     <color name="bg_facebook">#3B5998</color>
 
@@ -52,5 +54,5 @@
     <color name="colorTransparent">#00cecece</color>
     <color name="QRCodeBlackColor">#000000</color>
     <color name="QRCodeWhiteColor">#ffffff</color>
-
+    <color name="pin_normal">#6B767E</color>
 </resources>

@@ -1,10 +1,12 @@
 package com.itg.jobcardmanagement.registration.fragment;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -19,6 +21,7 @@ import com.itg.jobcardmanagement.registration.model.RegistrationModel;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -56,9 +59,13 @@ public class CustomerBasicInfoFragment extends Fragment {
     TextInputEditText edtState;
     @BindView(R.id.input_state)
     TextInputLayout inputState;
-
-    // TODO: Rename and change types of parameters
+    @BindView(R.id.input_email)
+    TextInputLayout inputEmail;
+    private String mParam1;
+    private String mParam2;
     private RegistrationModel model;
+    private Context mContext;
+    private FragmentManager fm;
 
 
     public CustomerBasicInfoFragment() {
@@ -68,6 +75,8 @@ public class CustomerBasicInfoFragment extends Fragment {
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
+     * <p>
+     * <<<<<<< HEAD
      *
      * @return A new instance of fragment CustomerBasicInfoFragment.
      */
@@ -76,7 +85,6 @@ public class CustomerBasicInfoFragment extends Fragment {
         CustomerBasicInfoFragment fragment = new CustomerBasicInfoFragment();
         Bundle args = new Bundle();
         args.putParcelable(ARG_PARAM1, model);
-        fragment.setArguments(args);
         return fragment;
     }
 
@@ -97,7 +105,7 @@ public class CustomerBasicInfoFragment extends Fragment {
         edtAddress.setInputType(InputType.TYPE_CLASS_TEXT |
                 InputType.TYPE_TEXT_FLAG_MULTI_LINE |
                 InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
-
+        setModelToWidget();
         checkRegistrationModel();
 
 
@@ -105,15 +113,12 @@ public class CustomerBasicInfoFragment extends Fragment {
     }
 
     private void checkRegistrationModel() {
-        if(model!= null )
-        {
-             if(validate())
-             {
-                 ((CustomerRegistrationActivity)getActivity()).sendBaiscInfoToActivity(edtName.getText().toString(), edtLName.getText().toString(), edtContact.getText().toString(),edtAddress.getText().toString(),edtCity.getText().toString(),edtState.getText().toString());
-             }else
-             {
-                 Toast.makeText(getActivity(), "Field are not match", Toast.LENGTH_SHORT).show();
-             }
+        if (model != null) {
+            if (validate()) {
+                ((CustomerRegistrationActivity) getActivity()).sendBaiscInfoToActivity(edtName.getText().toString(), edtLName.getText().toString(), edtContact.getText().toString(), edtAddress.getText().toString(), edtCity.getText().toString(), edtState.getText().toString());
+            } else {
+                Toast.makeText(getActivity(), "Field are not match", Toast.LENGTH_SHORT).show();
+            }
         }
 
     }
@@ -121,35 +126,108 @@ public class CustomerBasicInfoFragment extends Fragment {
     private boolean validate() {
         boolean isValidate = true;
 
-        if(TextUtils.isEmpty(edtName.getText().toString())) {
+        if (TextUtils.isEmpty(edtName.getText().toString())) {
             edtName.setError("Field is empty");
             isValidate = false;
-        } if(TextUtils.isEmpty(edtLName.getText().toString())) {
+        }
+        if (TextUtils.isEmpty(edtLName.getText().toString())) {
             edtLName.setError("Field is empty");
             isValidate = false;
         }
-         if(TextUtils.isEmpty(edtContact.getText().toString())) {
-             edtContact.setError("Field is empty");
+        if (TextUtils.isEmpty(edtContact.getText().toString())) {
+            edtContact.setError("Field is empty");
+            isValidate = false;
+        } else if (edtContact.getText().length() != 10) {
+            edtContact.setError("Enter Valid Number");
             isValidate = false;
         }
-         else if(edtContact.getText().length()!=10)
-         {
-             edtContact.setError("Enter Valid Number");
-             isValidate = false;
-         }
-        if(TextUtils.isEmpty(edtAddress.getText().toString())) {
+        if (TextUtils.isEmpty(edtAddress.getText().toString())) {
             edtAddress.setError("Field is empty");
             isValidate = false;
-        }if(TextUtils.isEmpty(edtCity.getText().toString())) {
+        }
+        if (TextUtils.isEmpty(edtCity.getText().toString())) {
             edtCity.setError("Field is empty");
             isValidate = false;
-        }if(TextUtils.isEmpty(edtState.getText().toString())) {
+        }
+        if (TextUtils.isEmpty(edtState.getText().toString())) {
             edtState.setError("Field is empty");
             isValidate = false;
-        }
 
+//            if (model != null) {
+//                if (validate()) {
+//                    ((CustomerRegistrationActivity) getActivity()).sendBaiscInfoToActivity(edtName.getText().toString(), edtLName.getText().toString(), edtContact.getText().toString(), edtAddress.getText().toString(), edtCity.getText().toString(), edtState.getText().toString());
+//                } else {
+//                    Toast.makeText(getActivity(), "Field are empty ", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+
+        }
         return isValidate;
     }
+
+    private void setModelToWidget() {
+        if (model != null) {
+
+            edtName.setText(model.getFirstName());
+            edtLName.setText(model.getLastName());
+            edtAddress.setText(model.getCustomerAddress());
+            edtState.setText(model.getCustomerState());
+            edtCity.setText(model.getCustomerCity());
+            edtContact.setText(model.getContactNumber());
+
+            checkPossibilites();
+        }
+
+
+    }
+
+    private void checkPossibilites() {
+//        if (!model.getContactNumber().equalsIgnoreCase(edtContact.getText().toString())
+//                && !model.getCustomerEmail().equalsIgnoreCase(edtEmail.getText().toString())) {
+//            if (TextUtils.isEmpty(model.getCustomerTransfertFilePath())) {
+//                openQueryForm();
+//            }
+//        }
+    }
+
+
+//    private boolean validate() {
+//        boolean isValidate = true;
+//
+//        if (TextUtils.isEmpty(edtName.getText().toString())) {
+//            edtName.setError("Field is empty");
+//            isValidate = false;
+//        }
+//        if (TextUtils.isEmpty(edtLName.getText().toString())) {
+//            edtLName.setError("Field is empty");
+//            isValidate = false;
+//        }
+//        if (TextUtils.isEmpty(edtContact.getText().toString())) {
+//            edtContact.setError("Field is empty");
+//            isValidate = false;
+//        } else if (edtContact.getText().length() != 10) {
+//            edtContact.setError("Enter Valid Number");
+//            isValidate = false;
+//        }
+//        if (TextUtils.isEmpty(edtAddress.getText().toString())) {
+//            edtAddress.setError("Field is empty");
+//            isValidate = false;
+//        }
+//        if (TextUtils.isEmpty(edtCity.getText().toString())) {
+//            edtCity.setError("Field is empty");
+//            isValidate = false;
+//        }
+//        if (TextUtils.isEmpty(edtState.getText().toString())) {
+//            edtState.setError("Field is empty");
+//            isValidate = false;
+//        }
+//        if (TextUtils.isEmpty(edtEmail.getText().toString())) {
+//            edtEmail.setError("Field is empty");
+//            isValidate = false;
+//        }
+//
+//        return isValidate;
+//    }
 
     @Override
     public void onDestroyView() {
@@ -158,4 +236,18 @@ public class CustomerBasicInfoFragment extends Fragment {
     }
 
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        this.mContext = context;
+
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        if (mContext != null) {
+            mContext = null;
+        }
+    }
 }

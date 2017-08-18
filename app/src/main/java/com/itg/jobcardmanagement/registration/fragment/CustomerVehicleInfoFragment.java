@@ -62,6 +62,7 @@ public class CustomerVehicleInfoFragment extends Fragment implements View.OnClic
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
+<<<<<<< HEAD
      * @return A new instance of fragment CustomerVehicleInfoFragment.
      */
     // TODO: Rename and change types and number of parameters
@@ -111,7 +112,7 @@ public class CustomerVehicleInfoFragment extends Fragment implements View.OnClic
             ((CustomerRegistrationActivity)getActivity()).sendVehicleDataToActivity(edtSeries.getText().toString(), edtModelCode.getText().toString(), edtColorCode.getText().toString(),edtSaleDate.getText().toString(),edtVinNo.getText().toString(),edtSellingDealer.getText().toString());
         }else
         {
-            Toast.makeText(getActivity(), "Field are not match", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "Field are empty", Toast.LENGTH_SHORT).show();
         }
 
 

@@ -6,9 +6,6 @@ import com.itg.jobcardmanagement.common.BaseWeakPresenter;
 import com.itg.jobcardmanagement.registration.mvp.LoginRegMVP;
 import com.itg.jobcardmanagement.registration.mvp.module.PasswordModuleImp;
 
-/**
- * Created by itg_Android on 8/9/2017.
- */
 
 public class PasswordPresenterImp extends BaseWeakPresenter implements LoginRegMVP.PasswordPresenter, LoginRegMVP.PasswordListener {
 

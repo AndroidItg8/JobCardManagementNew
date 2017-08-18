@@ -8,13 +8,8 @@ import com.itg.jobcardmanagement.registration.model.RegistrationModel;
  * Created by Android itg 8 on 8/7/2017.
  */
 
+
 public interface RegistrationPresenter extends BasePresenter {
-
-    void sendRegistrationInfoToServer(VolleyControler volleyControler , RegistrationModel model);
-    interface RegistrationData
-    {
-        void onFailedToSaved(String msg);
-        void onSuccessfulToSaved(String msg);
-    }
-
+    void onsendRegistrationInfoToServer(RegistrationModel model);
 }
+

@@ -4,8 +4,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <string name="regis_no">Enter Registration Number</string>
-    <string name="thesis_no">Enter Thesis Number</string>
+    <string name="regis_no">Registration Number</string>
+    <string name="thesis_no">Chassis Number</string>
 
     <string name="slide_1_title">Welcome to APP_NAME</string>
     <string name="slide_1_desc">The easiest way to manage servicing information of your car!</string>
@@ -22,6 +22,11 @@
     <string name="skip">SKIP</string>
     <string name="title_activity_too">TOo</string>
     <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_main_setting">Setting</string>
+    <string name="camera_rationale">This app need to access your storage.</string>
+    <string name="title_activity_customer_profile">CustomerProfile</string>
+    <string name="title_activity_profile"></string>
+    <string name="title_activity_service_details"></string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
 
@@ -111,7 +116,6 @@
         "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
         "when a user tries to pick up one of cards.\n\n"
     </string>
-    <string name="action_settings">Logout</string>
 
     <string name="title_activity_customer_registration"></string>
     <string name="title_activity_main2">Main2Activity</string>
@@ -129,5 +133,9 @@
     <string name="btn_next">NEXT</string>
     <!--<string name="default_web_client_id">616218008105-5igt5ncpb507ag07f7af43rlccdnn08e.apps.googleusercontent.com</string>-->
 
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="action_settings">Profile</string>
+    <string name="action_logout">Logout</string>
+    <string name="chesis_number">Enter Chassis Number</string>
 
 </resources>

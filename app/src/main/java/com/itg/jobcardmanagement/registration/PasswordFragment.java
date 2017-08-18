@@ -24,11 +24,6 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link PasswordFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class PasswordFragment extends Fragment  implements LoginRegMVP.PasswordView{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -150,7 +145,7 @@ public class PasswordFragment extends Fragment  implements LoginRegMVP.PasswordV
 
     @Override
     public void onSuccessful(Object o) {
-        listener.onRegistrationDone();
+        listener.onRegistrationDone(o);
     }
 
 

@@ -1,13 +1,16 @@
 package com.itg.jobcardmanagement.registration;
 
+import android.Manifest;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
@@ -27,16 +30,23 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.itg.jobcardmanagement.R;
+import com.itg.jobcardmanagement.doument.fragment.DocumentDailogueFragment;
+import com.itg.jobcardmanagement.doument.fragment.NoTransferDocumnetFragment;
 import com.itg.jobcardmanagement.registration.adapter.RegistrationViewPagerAdapter;
 import com.itg.jobcardmanagement.registration.model.RegistrationModel;
-import com.itg.jobcardmanagement.registration.mvp.presenter.RegistrationPresenter;
+import com.itg.jobcardmanagement.registration.mvp.LoginRegMVP;
 import com.itg.jobcardmanagement.registration.mvp.presenter.RegistrationPresenterImp;
-import com.itg.jobcardmanagement.registration.mvp.view.RegistrationView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import pub.devrel.easypermissions.AfterPermissionGranted;
+import pub.devrel.easypermissions.AppSettingsDialog;
+import pub.devrel.easypermissions.EasyPermissions;
 
-public class CustomerRegistrationActivity extends AppCompatActivity implements View.OnClickListener ,RegistrationView {
+public class CustomerRegistrationActivity extends AppCompatActivity implements View.OnClickListener ,LoginRegMVP.RegistrationView, EasyPermissions.PermissionCallbacks {
 
 
     private static final String TAG = CustomerRegistrationActivity.class.getSimpleName();
@@ -89,7 +99,10 @@ public class CustomerRegistrationActivity extends AppCompatActivity implements V
     private String registation;
     private String thesis;
     private RegistrationModel model;
-    private RegistrationPresenter presenter;
+    private LoginRegMVP.RegistrationPresenter presenter;
+    private FragmentManager fm;
+    private  static final int RC_CAMERA = 121;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,7 +113,6 @@ public class CustomerRegistrationActivity extends AppCompatActivity implements V
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         nestedScrollingView.setFillViewport(true);
-        viewpager.setAdapter(new RegistrationViewPagerAdapter(getSupportFragmentManager(), model));
         checkApiVersion();
         checkRegistrationModel();
 
@@ -108,7 +120,6 @@ public class CustomerRegistrationActivity extends AppCompatActivity implements V
     }
 
     private void checkRegistrationModel() {
-
     }
 
     private void checkApiVersion() {
@@ -123,6 +134,7 @@ public class CustomerRegistrationActivity extends AppCompatActivity implements V
     private void init() {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_black_24dp);
+//        readPermission();
         model = new RegistrationModel();
         edtRegistration.setOnClickListener(this);
         edtThesis.setOnClickListener(this);
@@ -133,7 +145,6 @@ public class CustomerRegistrationActivity extends AppCompatActivity implements V
         imgPre.setOnClickListener(this);
         btnFinished.setOnClickListener(this);
         presenter = new RegistrationPresenterImp(this);
-        sendDataToServer();
         viewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -180,7 +191,6 @@ public class CustomerRegistrationActivity extends AppCompatActivity implements V
                     thesis = edtThesis.getText().toString();
                     edtThesis.setText(editText.getText().toString());
                     model.setChesisNumber(editText.getText().toString());
-                    model.setChesisNumber(editText.getText().toString());
 
 
                 }
@@ -188,7 +198,6 @@ public class CustomerRegistrationActivity extends AppCompatActivity implements V
 
             }
         });
-
 
         mBottomSheetDialog.show();
     }
@@ -203,7 +212,7 @@ public class CustomerRegistrationActivity extends AppCompatActivity implements V
                 openBottomSheet(false);
                 break;
             case R.id.fab:
-
+                presenter.onsendRegistrationInfoToServer(model);
                 break;
             case R.id.lbl_registration:
                 // openBottomSheet(true);
@@ -212,13 +221,84 @@ public class CustomerRegistrationActivity extends AppCompatActivity implements V
                 //openBottomSheet(false);
                 break;
             case R.id.img_next:
+                checkFragmentPosition();
+
                 break;
             case R.id.img_pre:
+                if (viewpager.getCurrentItem() != 0) {
+                    viewpager.setCurrentItem(viewpager.getCurrentItem() - 1);
+                    if (btnFinished.getVisibility() == View.VISIBLE) {
+                        btnFinished.setVisibility(View.GONE);
+                        imgPre.setVisibility(View.VISIBLE);
+                    }
+                }
                 break;
             case R.id.btn_finished:
+                //   checkFragmentUsingViewPagerPosition();
                 break;
         }
     }
+
+    private void checkPossibilites() {
+
+        if(model.getRegistrationNumber().equalsIgnoreCase(edtRegistration.getText().toString())
+                && model.getChesisNumber().equalsIgnoreCase(edtThesis.getText().toString()))
+        {
+            viewpager.setAdapter(new RegistrationViewPagerAdapter(getSupportFragmentManager(), model));
+        }else
+        {
+
+        }
+    }
+
+    @AfterPermissionGranted(RC_CAMERA)
+    private void readPermission() {
+        String[] perms = {Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+        if (EasyPermissions.hasPermissions(this, perms)) {
+            openDocumnetDailogue();
+        } else {
+            // Do not have permissions, request them now
+            EasyPermissions.requestPermissions(this, getString(R.string.camera_rationale),
+                    RC_CAMERA, perms);
+        }
+    }
+    private void checkFragmentPosition() {
+        switch (viewpager.getCurrentItem())
+        {
+            case 0:
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+
+        }
+    }
+//    private void checkFragmentUsingViewPagerPosition() {
+//        switch (signUpViewPager.getCurrentItem()) {
+//            case 0:
+//                if (userFragmentListener != null) {
+//                    //  userFragmentListener.onUserProfileListerner(userProfileModel);
+//                    userFragmentListener.onuserListener();
+//                }
+//                break;
+//            case 1:
+//                if (ngoFragmentListener != null) {
+//                    // ngoFragmentListener.onNGOProfileUpateListerner(userProfileModel);
+//                    ngoFragmentListener.onNgoProfileListener();
+//                }
+//                break;
+//            case 2:
+//                if (ngoAccountFragmentListener != null) {
+//                    //  ngoAccountFragmentListener.onProfileUpateAccountListerner(userProfileModel);
+//                    ngoAccountFragmentListener.onNgoAccountListener();
+//                }
+//                break;
+//
+//
+//      }
+//    }
+
 
     private void OpenSoftKeyboard() {
         InputMethodManager inputMethodManager =
@@ -304,10 +384,75 @@ public class CustomerRegistrationActivity extends AppCompatActivity implements V
     @Override
     public void onHideProgress() {
 
+
     }
 
     @Override
     public void onSendRegistrationDetailsToServer(RegistrationModel model) {
+
+    }
+
+    @Override
+    public void onFeildError(EditText... editTexts) {
+
+    }
+
+    @Override
+    public void onSaveRegistartionSuccesfully(String msg) {
+        checkPossibilites();
+    }
+
+    @Override
+    public void onUserNotMatch(String msg) {
+        openDocumnetDailogue();
+
+    }
+
+    @Override
+    public void onUserNameMatch(String failed) {
+        openQueryForm();
+
+    }
+    private void openQueryForm() {
+        fm = getSupportFragmentManager();
+        NoTransferDocumnetFragment fragment=   new NoTransferDocumnetFragment();
+        fragment.show(fm,"");
+    }
+
+
+    public void sendQueryFormToServer(String title, String description) {
+
+
+    }
+
+    private void openDocumnetDailogue() {
+        fm = getSupportFragmentManager();
+        DocumentDailogueFragment fragment=   new DocumentDailogueFragment();
+        fragment.show(fm,"");
+
+    }
+
+
+    @Override
+    public void onPermissionsGranted(int requestCode, List<String> perms) {
+
+
+    }
+
+    @Override
+    public void onPermissionsDenied(int requestCode, List<String> perms) {
+        Log.d(TAG, "onPermissionsDenied:" + requestCode + ":" + perms.size());
+
+
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
+    }
+
+    public void onDocumentSaveToSever(ArrayList<String> documnetFileList) {
 
     }
 }

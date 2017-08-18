@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="car_exterior">
+        <item>Yellow</item>
+        <item>Red</item>
+        <item>White</item>
+        <item>Off White</item>
+        <item>Green</item>
+        <item>Blue</item>
+        <item>GOld</item>
+        <item>Silver</item>
+    </string-array>
+    <array name="car_color">
+        <item> #f2840e</item>
+        <item>#480a07</item>
+        <item>#FFF</item>
+        <item>#b3b2b2</item>
+        <item>#252a5e</item>
+        <item>#9c8c24</item>
+        <item>#c0c0c0</item>
+   </array>
+</resources>

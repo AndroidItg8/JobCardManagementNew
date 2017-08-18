@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.itg.jobcardmanagement.R;
 import com.itg.jobcardmanagement.common.CommonMethod;
+import com.itg.jobcardmanagement.common.Prefs;
 import com.itg.jobcardmanagement.home.MainActivity;
 
 import butterknife.BindView;
@@ -68,8 +69,22 @@ public class PasswordActivity extends AppCompatActivity implements RegistrationF
 
 
     @Override
-    public void onRegistrationDone() {
+    public void onRegistrationDone(Object o) {
+//        if(Prefs.contains(CommonMethod.USER_PROFILE_CREATED))
+        Prefs.remove(CommonMethod.TOKEN);
+        Prefs.putString(CommonMethod.TOKEN,o.toString());
+//        if(Prefs.contains(CommonMethod.USER_PROFILE_UPDATED))
+//            startHomeActivity();
+//        else
+//            startProfileRegistrationActivity();
+
         startHomeActivity();
+
+    }
+
+    private void startProfileRegistrationActivity() {
+        Intent intent=new Intent(this,CustomerRegistrationActivity.class);
+        startActivity(intent);
     }
 
     private void startHomeActivity() {

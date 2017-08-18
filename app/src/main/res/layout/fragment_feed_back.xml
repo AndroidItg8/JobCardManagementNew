@@ -1,13 +1,102 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.itg.jobcardmanagement.home.fragment.FeedBackFragment">
+    android:layout_height="match_parent">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
+        android:id="@+id/rl_feedback"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp">
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="3"
+            android:layout_gravity="center"
+            android:id="@+id/rgb_feedback">
+            <RadioButton
+                android:id="@+id/rgb_fed_sad"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:button="@null"
+                android:text="Sad"
+                android:textColor="#48A0DC"
+                android:gravity="center"
+                android:drawablePadding="10dp"
+                android:drawableTop="@drawable/ic_sad"/>
+            <RadioButton
+                android:id="@+id/rgb_fed_happy"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:button="@null"
+                android:text="Happy"
+                android:drawablePadding="10dp"
+                android:textColor="#C03A2B"
+                android:gravity="center"
+                android:drawableTop="@drawable/ic_happy"/>
+            <RadioButton
+                android:id="@+id/rgb_fed_aw"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:button="@null"
+                android:text="awesome"
+                android:drawablePadding="10dp"
+                android:textColor="#AF8066"
+                android:gravity="center"
+                android:drawableTop="@drawable/ic_awesome"/>
+        </RadioGroup>
+    </RelativeLayout>
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_feedback"
+        android:layout_margin="10dp">
 
-</FrameLayout>
+        <android.support.v7.widget.AppCompatRatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:rating="2"
+            android:stepSize=".5"
+            android:numStars="5"
+            android:visibility="gone"
+            android:layout_below="@+id/lbl_service"
+            style="@style/ratingStyle"
+            android:id="@+id/rb_service"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextViewStyle"
+            android:id="@+id/lbl_service"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"
+            android:textColorHint="#000"
+            android:padding="10dp"
+            android:textStyle="bold"
+            android:visibility="visible"
+            android:hint=" Your Opinion matters for Us..!! "/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextViewStyle"
+            android:layout_below="@+id/lbl_service"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:textColorHint="@color/colorGray"
+            android:textStyle="normal"
+            android:gravity="center"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:visibility="visible"
+            android:hint="We work for super hard to make close to better for you "/>
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

@@ -15,4 +15,9 @@ public class CommonMethod {
     public static final String TYPE = "TYPE";
     public static final String REG_REQ = "reg_req";
     public static final String USER_EMAIL_OR_PHONE_NUMBER = "USER_EMAIL_OR_PHONE_NUMBER";
+
+    public static final String APPNAME = "JobCardManagement";
+
+    public static final String TOKEN = "tkn";
+    public static final String USER_PROFILE_UPDATED = "user_profile_update";
 }

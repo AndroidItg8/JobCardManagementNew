@@ -1,12 +1,11 @@
 package com.itg.jobcardmanagement.common;
 
-import android.os.Bundle;
 import android.util.Log;
 
 public final class Logger {
-    private static String TAG = "MOMBOSAMBA";
     private static final boolean LOG_ENABLE = true;
     private static final boolean DETAIL_ENABLE = true;
+    private static String TAG = "MOMBOSAMBA";
 
     private Logger() {
     }

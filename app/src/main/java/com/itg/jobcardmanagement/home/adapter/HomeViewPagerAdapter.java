@@ -11,7 +11,7 @@ import java.util.ArrayList;
  */
 
 public class HomeViewPagerAdapter extends FragmentPagerAdapter {
-     private ArrayList<Fragment> fragmentArrayList = new ArrayList<>();
+    private ArrayList<Fragment> fragmentArrayList = new ArrayList<>();
     private ArrayList<String> titleList = new ArrayList<>();
 
     public HomeViewPagerAdapter(FragmentManager fm) {

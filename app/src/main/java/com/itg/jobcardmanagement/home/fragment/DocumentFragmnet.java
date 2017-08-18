@@ -1,7 +1,6 @@
 package com.itg.jobcardmanagement.home.fragment;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -27,6 +26,7 @@ public class DocumentFragmnet extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    private Context mContext;
 
     public DocumentFragmnet() {
         // Required empty public constructor
@@ -63,19 +63,22 @@ public class DocumentFragmnet extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.fragment_document_fragmnet, container, false);
-         return view;
+        View view = inflater.inflate(R.layout.fragment_document_fragmnet, container, false);
+        return view;
     }
 
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        mContext = context;
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
+        if (mContext != null)
+            mContext = null;
     }
 
 

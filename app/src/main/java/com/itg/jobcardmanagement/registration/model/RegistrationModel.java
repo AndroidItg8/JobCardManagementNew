@@ -26,6 +26,27 @@ public class RegistrationModel  implements Parcelable {
     private String carSaleDate;
     private String carDelearName;
 
+    public String getCustomerTransfertFilePath() {
+        return customerTransfertFilePath;
+    }
+
+    public void setCustomerTransfertFilePath(String customerTransfertFilePath) {
+        this.customerTransfertFilePath = customerTransfertFilePath;
+    }
+
+    private String customerTransfertFilePath;
+
+    public String getCustomerEmail() {
+        return customerEmail;
+    }
+
+    public void setCustomerEmail(String customerEmail) {
+        this.customerEmail = customerEmail;
+    }
+
+    private String customerEmail;
+
+
     public int getId() {
         return id;
     }
@@ -159,6 +180,8 @@ public class RegistrationModel  implements Parcelable {
         carColorCode = in.readString();
         carSaleDate = in.readString();
         carDelearName = in.readString();
+        customerEmail = in.readString();
+        customerTransfertFilePath = in.readString();
     }
 
     public static final Creator<RegistrationModel> CREATOR = new Creator<RegistrationModel>() {
@@ -195,6 +218,8 @@ public class RegistrationModel  implements Parcelable {
         dest.writeString(carColorCode);
         dest.writeString(carSaleDate);
         dest.writeString(carDelearName);
+        dest.writeString(customerEmail);
+        dest.writeString(customerTransfertFilePath);
     }
 
     public String getCarDelearName() {

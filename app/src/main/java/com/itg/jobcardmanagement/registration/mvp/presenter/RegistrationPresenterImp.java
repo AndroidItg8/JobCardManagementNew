@@ -1,28 +1,27 @@
 package com.itg.jobcardmanagement.registration.mvp.presenter;
 
-import com.itg.jobcardmanagement.common.VolleyControler;
+import com.itg.jobcardmanagement.common.BaseWeakPresenter;
 import com.itg.jobcardmanagement.registration.model.RegistrationModel;
-import com.itg.jobcardmanagement.registration.mvp.module.RegistrationModule;
-import com.itg.jobcardmanagement.registration.mvp.view.RegistrationView;
+import com.itg.jobcardmanagement.registration.mvp.LoginRegMVP;
+import com.itg.jobcardmanagement.registration.mvp.module.RegistrationModuleImp;
 
 /**
  * Created by Android itg 8 on 8/7/2017.
  */
 
-public class RegistrationPresenterImp  implements  RegistrationPresenter,RegistrationPresenter.RegistrationData {
+public class RegistrationPresenterImp extends BaseWeakPresenter implements LoginRegMVP.RegistrationPresenter, LoginRegMVP.RegistrationListener {
 
+    private final LoginRegMVP.RegistrationModule module;
 
-    private RegistrationView view;
-     private RegistrationModule module;
+    public RegistrationPresenterImp(LoginRegMVP.RegistrationView view) {
+        super(view);
 
-    public RegistrationPresenterImp(RegistrationView view) {
-
-        this.view = view;
-
+        module = new RegistrationModuleImp(this);
     }
 
     @Override
     public void onProgressHide() {
+
 
     }
 
@@ -41,18 +40,58 @@ public class RegistrationPresenterImp  implements  RegistrationPresenter,Registr
 
     }
 
+
     @Override
-    public void sendRegistrationInfoToServer(VolleyControler volleyControler, RegistrationModel model) {
+    public void onsendRegistrationInfoToServer(RegistrationModel model) {
+        module.onRegistrationDetailsSentToServer(model);
 
     }
 
     @Override
-    public void onFailedToSaved(String msg) {
+    public void onSaveSuccessfully(String msg) {
+        if (hasView()) {
+            getRegView().onSaveRegistartionSuccesfully(msg);
+        }
 
     }
 
     @Override
-    public void onSuccessfulToSaved(String msg) {
+    public void onFailedToSave(String msg) {
 
+    }
+
+    @Override
+    public void onError(String msg) {
+
+    }
+
+    @Override
+    public void onNetworkFailed(String msg) {
+
+    }
+
+    @Override
+    public void onNetworkAvaailable(String msg) {
+
+    }
+
+    @Override
+    public void onUserNameNotMatch(String msg) {
+        if (hasView()) {
+            getRegView().onUserNotMatch(msg);
+        }
+
+    }
+
+    @Override
+    public void onUserNameMatch(String failed) {
+        if (hasView()) {
+            getRegView().onUserNameMatch(failed);
+        }
+
+    }
+
+    private LoginRegMVP.RegistrationView getRegView() {
+        return (LoginRegMVP.RegistrationView) getView();
     }
 }

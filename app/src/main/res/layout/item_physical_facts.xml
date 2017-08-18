@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <ImageView
+        android:id="@+id/img_car"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_margin="10dp"
+        app:srcCompat="@drawable/ic_file" />
+
+    <TextView
+        android:id="@+id/txt_name"
+        style="@style/TextViewStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="05dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/img_car"
+        android:layout_toRightOf="@+id/img_car"
+        android:hint="section car where damage?? Name" />
+
+    <TextView
+        android:id="@+id/txt_product"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_name"
+        android:layout_gravity="center"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_toEndOf="@+id/img_car"
+        android:layout_toRightOf="@+id/img_car"
+        android:gravity="center"
+        android:hint="Product Name used in"
+        android:textColor="@color/colorBlack" />
+
+    <TextView
+        android:id="@+id/txt_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_product"
+        android:layout_gravity="center"
+        android:layout_marginEnd="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="05dp"
+        android:layout_toEndOf="@+id/img_car"
+        android:layout_toRightOf="@+id/img_car"
+        android:gravity="center"
+        android:hint="status:"
+        android:textColor="@color/colorBlack" />
+
+    <TextView
+        android:id="@+id/txt_status_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_product"
+        android:layout_gravity="center"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="05dp"
+        android:layout_toEndOf="@+id/txt_status"
+        android:layout_toRightOf="@+id/txt_status"
+        android:gravity="center"
+        android:text="Pending"
+        android:layout_alignBaseline="@+id/txt_status"
+        android:textColor="@color/colorBlack" />
+
+    <TextView
+        android:id="@+id/txt_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/txt_product"
+        android:layout_gravity="center"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:gravity="center"
+        android:layout_alignBaseline="@+id/txt_status_value"
+
+        android:hint="Date"
+        android:textColor="@color/colorBlack" />
+
+
+</RelativeLayout>

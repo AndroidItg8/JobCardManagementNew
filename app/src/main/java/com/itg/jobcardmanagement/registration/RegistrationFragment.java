@@ -17,8 +17,6 @@ import com.itg.jobcardmanagement.R;
 import com.itg.jobcardmanagement.registration.mvp.RegMVP;
 import com.itg.jobcardmanagement.registration.mvp.RegPresenterImp;
 
-import java.io.CharArrayWriter;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -178,7 +176,7 @@ public class RegistrationFragment extends Fragment implements View.OnClickListen
     public void onRegistrationSuccessful(Object... obj) {
         if(obj.length>0){
             if(listener!=null){
-                listener.onRegistrationDone();
+                listener.onRegistrationDone(obj[0]);
             }
         }
     }
@@ -210,7 +208,7 @@ public class RegistrationFragment extends Fragment implements View.OnClickListen
     }
 
     public interface OnRegistrationListner{
-            void onRegistrationDone();
+            void onRegistrationDone(Object o);
     }
 
 

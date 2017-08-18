@@ -1,8 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+    <ImageView
+        android:id="@+id/img_car"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignBottom="@+id/txt_date"
+        android:layout_alignTop="@+id/txt_companyName"
+        android:layout_margin="8dp"
+        android:textAllCaps="true"
+        android:visibility="visible"
+        android:scaleType="centerInside"
+        app:srcCompat="@drawable/toyota" />
 
+    <TextView
+        android:id="@+id/txt_companyName"
+        style="@style/TextViewStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="08dp"
+        android:visibility="visible"
+        android:layout_toEndOf="@+id/img_car"
+        android:layout_toRightOf="@+id/img_car"
+        android:hint="CompanyName" />
 
+    <TextView
+        android:id="@+id/txt_registration"
+        style="@style/TextViewStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_companyName"
+        android:layout_marginEnd="08dp"
+        android:layout_marginRight="08dp"
+        android:layout_marginStart="08dp"
+        android:layout_marginLeft="08dp"
+        android:ellipsize="end"
+        android:layout_toEndOf="@+id/img_car"
+        android:layout_toRightOf="@+id/img_car"
+        android:visibility="visible"
+        android:hint="Address Address Address"
+        android:lines="2"
+        android:maxLines="2"
+        />
+
+    <TextView
+        android:id="@+id/txt_date"
+        style="@style/TextViewStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/txt_registration"
+        android:layout_marginBottom="08dp"
+        android:layout_marginEnd="08dp"
+        android:layout_marginRight="08dp"
+        android:hint="Date" />
 </RelativeLayout>

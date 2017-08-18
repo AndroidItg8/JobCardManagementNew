@@ -6,7 +6,6 @@ import com.android.volley.Response;
 import com.android.volley.ServerError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.HttpHeaderParser;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.google.gson.Gson;
 import com.itg.jobcardmanagement.common.Logger;
@@ -76,18 +75,18 @@ public class PasswordModuleImp implements LoginRegMVP.PasswordModule {
 //                return params;
 //            }
 //        };
-    StringRequest request = new StringRequest(POST, NetworkCall.getInstance().verifyUser(), new Response.Listener<String>() {
+        StringRequest request = new StringRequest(POST, NetworkCall.getInstance().verifyUser(), new Response.Listener<String>() {
             @Override
             public void onResponse(String res) {
                 if (res != null) {
                     try {
                         Logger.i(res);
-                        JSONObject response=new JSONObject(res);
+                        JSONObject response = new JSONObject(res);
                         if (response.has("access_token")) {
                             listener.onSuccess(response.getString("access_token"));
-                        }else if(response.has("error")){
+                        } else if (response.has("error")) {
                             listener.onIncorrectPassword();
-                        }else {
+                        } else {
                             listener.onFail(new Gson().toJson(response));
                         }
                     } catch (JSONException e) {
@@ -121,7 +120,7 @@ public class PasswordModuleImp implements LoginRegMVP.PasswordModule {
                 }
             }
         }
-        ){
+        ) {
 //            @Override
 //            public Map<String, String> getHeaders() throws AuthFailureError {
 //                Map<String, String> params = new HashMap<String, String>();
@@ -129,17 +128,17 @@ public class PasswordModuleImp implements LoginRegMVP.PasswordModule {
 //                return params;
 //            }
 
-        @Override
-        public String getBodyContentType() {
-            return "application/x-www-form-urlencoded; charset=UTF-8";
-        }
+            @Override
+            public String getBodyContentType() {
+                return "application/x-www-form-urlencoded; charset=UTF-8";
+            }
 
-        @Override
-        protected Map<String, String> getParams() throws AuthFailureError {
-            return map;
-        }
-    };
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                return map;
+            }
+        };
 
-        MyApplication.getInstance().addToRequestQueue(request,PASS);
+        MyApplication.getInstance().addToRequestQueue(request, PASS);
     }
 }

@@ -36,7 +36,9 @@ import com.itg.jobcardmanagement.R;
 import com.itg.jobcardmanagement.common.CommonMethod;
 import com.itg.jobcardmanagement.common.Logger;
 import com.itg.jobcardmanagement.common.Prefs;
+import com.itg.jobcardmanagement.home.HomeActivity;
 import com.itg.jobcardmanagement.home.MainActivity;
+import com.itg.jobcardmanagement.registration.CustomerRegistrationActivity;
 import com.itg.jobcardmanagement.registration.PasswordActivity;
 import com.itg.jobcardmanagement.registration.mvp.LoginPresenterImp;
 import com.itg.jobcardmanagement.registration.mvp.LoginRegMVP;
@@ -52,6 +54,7 @@ public class LoginActivity extends AppCompatActivity implements LoginRegMVP.Logi
     private static final int RC_SIGN_IN = 102;
     private static final String TAG = LoginActivity.class.getSimpleName();
     private static final int INTENT_PASSWORD = 103;
+
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.toolbar_layout)
@@ -106,6 +109,16 @@ public class LoginActivity extends AppCompatActivity implements LoginRegMVP.Logi
                         .setAction("Action", null).show();
             }
         });
+
+        if(Prefs.contains(CommonMethod.USERNAME)){
+            if(Prefs.contains(CommonMethod.USER_PROFILE_UPDATED)) {
+                startActivity(new Intent(this, MainActivity.class));
+            }else {
+                startActivity(new Intent(this, CustomerRegistrationActivity.class));
+            }
+            finish();
+        }
+
         mAuth = FirebaseAuth.getInstance();
         presenter = new LoginPresenterImp(this);
     }
@@ -115,7 +128,7 @@ public class LoginActivity extends AppCompatActivity implements LoginRegMVP.Logi
         if (v.getId() == R.id.btn_next) {
             inEmail.setError(null);
             presenter.onUsernameSubmit(edtEmail.getText().toString());
-        }else if(v.getId()==R.id.btn_gplus){
+        } else if (v.getId() == R.id.btn_gplus) {
             startGPlusLogin();
         }
     }
@@ -142,7 +155,7 @@ public class LoginActivity extends AppCompatActivity implements LoginRegMVP.Logi
                 // ...
                 Logger.e("Fail to startGoogleClient");
             }
-        }else if(requestCode==INTENT_PASSWORD){
+        } else if (requestCode == INTENT_PASSWORD) {
             finishActivity(INTENT_PASSWORD);
             finish();
         }
@@ -184,15 +197,28 @@ public class LoginActivity extends AppCompatActivity implements LoginRegMVP.Logi
                 .build();
 
         mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .enableAutoManage(this , this)
+                .enableAutoManage(this, this)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
     }
 
     private void updateUI(FirebaseUser currentUser) {
-        if(currentUser!=null) {
+        if (currentUser != null) {
             startActivity(new Intent(this, MainActivity.class));
             finish();
+
+
+            presenter = new LoginPresenterImp(this);
+
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(mGoogleApiClient!=null) {
+            mGoogleApiClient.stopAutoManage(this);
+            mGoogleApiClient.disconnect();
         }
     }
 
@@ -223,18 +249,17 @@ public class LoginActivity extends AppCompatActivity implements LoginRegMVP.Logi
 
     @Override
     public void onVerificationFailed(String message) {
-        startRegActivity(getUsername(), message,REG);
+        startRegActivity(getUsername(), message, REG);
     }
 
     private void startRegActivity(String username, String profilePic, int type) {
-        Prefs.putString(CommonMethod.USER_EMAIL_OR_PHONE_NUMBER,getUsername());
+        Prefs.putString(CommonMethod.USER_EMAIL_OR_PHONE_NUMBER, getUsername());
         Intent intent = new Intent(this, PasswordActivity.class);
         intent.putExtra(CommonMethod.USERNAME, username);
         intent.putExtra(CommonMethod.PROFILE_PIC, profilePic);
-        intent.putExtra(CommonMethod.TYPE,type);
-        startActivityForResult(intent,INTENT_PASSWORD);
+        intent.putExtra(CommonMethod.TYPE, type);
+        startActivityForResult(intent, INTENT_PASSWORD);
     }
-
 
 
     @Override
@@ -244,6 +269,7 @@ public class LoginActivity extends AppCompatActivity implements LoginRegMVP.Logi
 
     @Override
     public void onUserFound(String userId, String profilePicUrl) {
+
         Prefs.putString(CommonMethod.USERNAME, userId);
         startRegActivity(getUsername(), profilePicUrl, PASS);
     }
@@ -254,6 +280,7 @@ public class LoginActivity extends AppCompatActivity implements LoginRegMVP.Logi
         btnFb.setEnabled(false);
         btnGplus.setEnabled(false);
         progressbar.setVisibility(View.VISIBLE);
+
     }
 
     @Override
@@ -267,6 +294,7 @@ public class LoginActivity extends AppCompatActivity implements LoginRegMVP.Logi
     @Override
     public String getUsername() {
         return edtEmail.getText().toString();
+
     }
 
     public void setUsername(String username) {

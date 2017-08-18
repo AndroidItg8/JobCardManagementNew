@@ -1,6 +1,7 @@
 package com.itg.jobcardmanagement.home.fragment;
 
-
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,6 +12,7 @@ import android.view.ViewGroup;
 
 import com.itg.jobcardmanagement.R;
 import com.itg.jobcardmanagement.home.adapter.VehicleServiceAdapter;
+import com.itg.jobcardmanagement.service.ServiceDetailsActivity;
 import com.itg.jobcardmanagement.widget.SimpleDividerItemDecoration;
 
 import butterknife.BindView;
@@ -34,6 +36,8 @@ public class ServiceFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private VehicleServiceAdapter adapter;
+    private Context mContext;
 
 
     public ServiceFragment() {
@@ -78,11 +82,18 @@ public class ServiceFragment extends Fragment {
     }
 
     private void setRecyclerView() {
-        recyclerViewService.setLayoutManager(new LinearLayoutManager(getActivity()));
-        VehicleServiceAdapter adapter = new VehicleServiceAdapter(getActivity());
-        SimpleDividerItemDecoration dividerItemDecoration = new SimpleDividerItemDecoration(getActivity());
+
+        recyclerViewService.setLayoutManager(new LinearLayoutManager(mContext));
+        SimpleDividerItemDecoration dividerItemDecoration = new SimpleDividerItemDecoration(recyclerViewService.getContext());
         recyclerViewService.addItemDecoration(dividerItemDecoration);
+        adapter = new VehicleServiceAdapter(getActivity(), new VehicleServiceAdapter.ServiceItem() {
+     @Override
+     public void onServiceItemClickedListener(int adapterPosition) {
+         startActivity(new Intent(mContext,ServiceDetailsActivity.class ));
+     }
+ });
         recyclerViewService.setAdapter(adapter);
+
     }
 
     @Override
@@ -91,5 +102,18 @@ public class ServiceFragment extends Fragment {
         unbinder.unbind();
     }
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mContext = context;
+    }
 
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        if(mContext != null)
+        {
+            mContext= null;
+        }
+    }
 }

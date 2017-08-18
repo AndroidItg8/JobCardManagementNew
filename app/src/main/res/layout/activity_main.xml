@@ -1,51 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context="com.itg.jobcardmanagement.home.MainActivity">
 
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:id="@+id/txt_model"
-        android:textSize="19sp"
-        android:textColorHint="@color/colorGray"
-        android:textColor="@color/colorBlack"
-        android:hint="Car Model"
-        android:focusable="false"
-        android:clickable="true"
-        android:gravity="center_horizontal|center_vertical"/>
+        android:layout_height="match_parent">
+
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:fitsSystemWindows="true"
+            android:theme="@style/AppTheme.PopupOverlay">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
 
 
+        </android.support.design.widget.AppBarLayout>
+
+        <TextView
+            android:id="@+id/txt_model"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/app_bar"
+            android:clickable="true"
+            android:focusable="false"
+            android:gravity="center_horizontal|center_vertical"
+            android:hint="Car Model"
+            android:textColor="@color/colorBlack"
+            android:textColorHint="@color/colorGray"
+            android:textSize="19sp" />
+
+        <include
+            android:id="@+id/include"
+            layout="@layout/layout_item_vehicle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_model" />
 
 
-    <android.support.design.widget.TabLayout
-        android:layout_below="@+id/txt_model"
-        android:id="@+id/tabLayout"
-        android:layout_width="match_parent"
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/include"
+            android:background="@color/colorPrimary"
+            app:tabGravity="fill"
+            app:tabIndicatorColor="#FFF"
+            app:tabIndicatorHeight="05dp"
+            app:tabMode="fixed"
+            app:tabSelectedTextColor="#FFF"
+            app:tabTextColor="@color/white" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/tabLayout" />
+
+    </RelativeLayout>
+
+    <include layout="@layout/content_main_setting" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:tabGravity="fill"
-        app:tabIndicatorColor="@color/white"
-        app:tabIndicatorHeight="05dp"
-        app:tabMode="scrollable"
-        app:tabSelectedTextColor="@color/white"
-        app:tabTextColor="@color/white"
-       android:background="@color/colorPrimary"/>
-    <android.support.v4.view.ViewPager
-        android:layout_below="@+id/tabLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/viewpager"/>
+        android:layout_margin="@dimen/fab_margin"
+        android:visibility="gone"
+        app:layout_anchor="@id/app_bar"
+        app:layout_anchorGravity="bottom|end"
+        app:srcCompat="@android:drawable/ic_dialog_email" />
 
 
-
-
-
-
-
-
-
-
-</RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>

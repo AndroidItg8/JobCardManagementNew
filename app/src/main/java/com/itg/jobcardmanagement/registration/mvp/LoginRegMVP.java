@@ -1,6 +1,12 @@
 package com.itg.jobcardmanagement.registration.mvp;
 
 import com.itg.jobcardmanagement.common.BaseModule;
+import android.widget.EditText;
+
+import com.itg.jobcardmanagement.common.BaseModule;
+import com.itg.jobcardmanagement.common.common_interface.BasePresenter;
+import com.itg.jobcardmanagement.common.common_interface.BaseView;
+import com.itg.jobcardmanagement.registration.model.RegistrationModel;
 
 /**
  * Created by itg_Android on 8/5/2017.
@@ -30,11 +36,13 @@ public class LoginRegMVP {
         void onLoginClicked(String userId, String password);
         void onPause();
         void onResume();
+
         void onDestroy();
     }
 
     interface LoginModule extends BaseModule {
         void onUsernameSubmit(String username, int type);
+
         void onSignupClicked(String username);
         void onRegistrationClicked(Object registration);
         void onLoginClicked(String userID,String password);
@@ -48,7 +56,7 @@ public class LoginRegMVP {
         void onRegSuccess(Object module);
     }
 
-    public interface PasswordView{
+   public interface PasswordView{
         void onPasswordEmpty();
         void onPasswordInvalid();
         void onProgressShow();
@@ -78,4 +86,33 @@ public class LoginRegMVP {
         void onIncorrectPassword();
     }
 
+    public interface RegistrationView extends BaseView {
+        void onSendRegistrationDetailsToServer(RegistrationModel model);
+        void onFeildError(EditText... editTexts);
+        void onSaveRegistartionSuccesfully(String msg);
+        void onUserNotMatch(String msg);
+        void onUserNameMatch(String failed);
+    }
+    public interface RegistrationListener
+    {
+        void onSaveSuccessfully( String msg);
+        void onFailedToSave(String msg);
+        void onError(String msg);
+        void onNetworkFailed(String msg);
+        void onNetworkAvaailable(String msg);
+        void onUserNameNotMatch(String msg);
+        void onUserNameMatch(String failed);
+    }
+
+
+
+
+    public interface RegistrationPresenter extends BasePresenter {
+        void onsendRegistrationInfoToServer(RegistrationModel model);
+    }
+
+    public  interface  RegistrationModule extends BaseModule
+    {
+        void onRegistrationDetailsSentToServer(RegistrationModel model);
+    }
 }

@@ -31,6 +31,7 @@ public class RegModuleImp implements RegMVP.RegModule {
 
     private static final String FLAG = "flag";
     private static final String MESSAGE = "Message";
+    private static final String TOKEN = "token";
 
     @Override
     public void onDestroy() {
@@ -57,7 +58,7 @@ public class RegModuleImp implements RegMVP.RegModule {
                     try {
                         JSONObject response=new JSONObject(res);
                         if (response.has(FLAG)) {
-                            listener.onSuccessfulReg(null);
+                            listener.onSuccessfulReg(response.getString(TOKEN));
                         } else if (response.has(MESSAGE)) {
                             listener.onNetworkCallFailed(response.getString(MESSAGE));
                         } else {

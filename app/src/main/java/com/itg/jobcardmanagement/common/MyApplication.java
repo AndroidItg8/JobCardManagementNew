@@ -17,22 +17,20 @@ import static com.android.volley.VolleyLog.TAG;
 public class MyApplication extends Application {
 
     private static final String MY_PREF_NAME = "JobCardPrefClass";
-
+    private static MyApplication mInstance;
     /**
      * Global request queue for Volley
      */
     private RequestQueue mRequestQueue;
 
-    private static MyApplication mInstance;
-
-    public static synchronized MyApplication getInstance(){
+    public static synchronized MyApplication getInstance() {
         return mInstance;
     }
 
     @Override
     public void onCreate() {
         super.onCreate();
-        mInstance=this;
+        mInstance = this;
         mInstance.initialisePeference();
     }
 
