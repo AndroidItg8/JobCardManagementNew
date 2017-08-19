@@ -59,22 +59,27 @@
         <activity
             android:name=".profile.ProfileActivity"
             android:label="@string/title_activity_profile"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".service.ServiceDetailsActivity"
+            android:name=".servicing.ServiceDetailsActivity"
             android:label="@string/title_activity_service_details"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".home.HomeActivity"
             android:label="@string/title_activity_home"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".setting.SettingActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".qr.QRCodeScanActivity"
             android:label="@string/title_activity_qrcode_scan"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <service
+            android:name=".common.service.DownloadService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>

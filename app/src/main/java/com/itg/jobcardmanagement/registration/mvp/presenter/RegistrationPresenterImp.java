@@ -9,6 +9,8 @@ import com.itg.jobcardmanagement.registration.model.Vehicle;
 import com.itg.jobcardmanagement.registration.mvp.LoginRegMVP;
 import com.itg.jobcardmanagement.registration.mvp.module.RegistrationModuleImp;
 
+import org.json.JSONObject;
+
 import java.util.HashMap;
 
 /**
@@ -28,6 +30,14 @@ public class RegistrationPresenterImp extends BaseWeakPresenter implements Login
         super(view);
         typeOfFabClicked = REG_CHECK;
         module = new RegistrationModuleImp(this);
+    }
+
+    @Override
+    public void checkUsersDetails() {
+        if(hasView()){
+                getRegView().showProfileDownloadProgress();
+        }
+        module.downloadProfileDetails();
     }
 
     @Override
@@ -229,5 +239,18 @@ public class RegistrationPresenterImp extends BaseWeakPresenter implements Login
             typeOfFabClicked = FINISH_REGISTRATION;
 
         }
+    }
+
+    @Override
+    public void onProfileDownloadComplete(JSONObject response) {
+        if(response!=null){
+
+        }
+//        module.startStoringToDb(response);
+    }
+
+    @Override
+    public void onProfileDownloadFailed(Object response) {
+
     }
 }

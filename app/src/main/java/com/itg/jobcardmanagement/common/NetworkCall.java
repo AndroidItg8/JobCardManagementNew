@@ -141,7 +141,7 @@ public class NetworkCall implements NetworkListener {
      }
      **/
     public String userProfileSave() {
-        return BASE_URL + USER_PROFILE ;
+        return BASE_URL + USER_PROFILE;
     }
 
     /***
@@ -152,6 +152,10 @@ public class NetworkCall implements NetworkListener {
      }
      **/
     public String vehicleSave() {
-        return BASE_URL + VEHICLE_SAVE ;
+        return BASE_URL + VEHICLE_SAVE;
+    }
+
+    public String userAllDetails() {
+        return BASE_URL + COMPLETE_DETAIL;
     }
 }

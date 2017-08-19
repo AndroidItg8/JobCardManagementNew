@@ -2,6 +2,7 @@ package com.itg.jobcardmanagement.registration;
 
 import android.Manifest;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -132,6 +133,7 @@ public class CustomerRegistrationActivity extends AppCompatActivity implements V
     private View fabView;
     private CommonMethod.NextButtonClickProfileListner listener;
     private CommonMethod.NextButtonClickedVehicleListener vehicleListener;
+    private ProgressDialog progressview;
 
 
     @Override
@@ -142,6 +144,7 @@ public class CustomerRegistrationActivity extends AppCompatActivity implements V
         ButterKnife.bind(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        presenter = new RegistrationPresenterImp(this);
         nestedScrollingView.setFillViewport(true);
         checkApiVersion();
         checkRegistrationModel();
@@ -150,6 +153,7 @@ public class CustomerRegistrationActivity extends AppCompatActivity implements V
     }
 
     private void checkRegistrationModel() {
+        presenter.checkUsersDetails();
     }
 
     private void checkApiVersion() {
@@ -207,7 +211,6 @@ public class CustomerRegistrationActivity extends AppCompatActivity implements V
         imgNext.setOnClickListener(this);
         imgPre.setOnClickListener(this);
         btnFinished.setOnClickListener(this);
-        presenter = new RegistrationPresenterImp(this);
         viewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -327,7 +330,6 @@ public class CustomerRegistrationActivity extends AppCompatActivity implements V
     }
 
 
-
 //    private void checkFragmentUsingViewPagerPosition() {
 //        switch (signUpViewPager.getCurrentItem()) {
 //            case 0:
@@ -402,8 +404,25 @@ public class CustomerRegistrationActivity extends AppCompatActivity implements V
     }
 
     @Override
-    public void onVehicleStorageSuccess(String carid){
-        Prefs.putString(CommonMethod.SELECTED_CAR,carid);
+    public void onVehicleStorageSuccess(String carid) {
+        Prefs.putString(CommonMethod.SELECTED_CAR, carid);
+    }
+
+    @Override
+    public void showProfileDownloadProgress() {
+        if (progressview == null)
+            progressview = new ProgressDialog(this);
+
+        progressview.setTitle("Loading");
+        progressview.setMessage("Please wait while we checking your previous car entries...");
+        progressview.setCancelable(true);
+        progressview.show();
+    }
+
+    @Override
+    public void hideProfileDownloadProgress() {
+        if (progressview != null && progressview.isShowing())
+            progressview.dismiss();
     }
 
     @Override
@@ -417,13 +436,13 @@ public class CustomerRegistrationActivity extends AppCompatActivity implements V
     }
 
     @Override
-    public void onProfileSuccessfullySaved(){
+    public void onProfileSuccessfullySaved() {
         btnFinished.setVisibility(View.GONE);
         imgNext.setVisibility(View.VISIBLE);
         fabPrevious.setVisibility(View.VISIBLE);
         Toast.makeText(this, "Profile saved...", Toast.LENGTH_SHORT).show();
-        if(viewpager.getCurrentItem()+1<2)
-        viewpager.setCurrentItem(viewpager.getCurrentItem()+1);
+        if (viewpager.getCurrentItem() + 1 < 2)
+            viewpager.setCurrentItem(viewpager.getCurrentItem() + 1);
     }
 
     @Override
@@ -587,7 +606,7 @@ public class CustomerRegistrationActivity extends AppCompatActivity implements V
             public void run() {
                 SlideToAbove();
             }
-        },400);
+        }, 400);
     }
 
     @Override
@@ -612,8 +631,8 @@ public class CustomerRegistrationActivity extends AppCompatActivity implements V
 
     @Override
     public void finishActivityRegComplete() {
-        Prefs.putString(CommonMethod.USER_PROFILE_UPDATED,"fdon");
-        Intent intent=new Intent(this, MainActivity.class);
+        Prefs.putString(CommonMethod.USER_PROFILE_UPDATED, "fdon");
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
     }
@@ -649,7 +668,7 @@ public class CustomerRegistrationActivity extends AppCompatActivity implements V
                         frmFabLayout.getWidth(), frmFabLayout.getHeight());
 //                int dp16= (int) CommonMethod.convertDpToPixel(16f,getApplicationContext());
 //                lp.setMargins(dp16, frmFabLayout.getWidth(), dp16, dp16);
-                int dp25= (int) CommonMethod.convertDpToPixel(25f,getApplicationContext());
+                int dp25 = (int) CommonMethod.convertDpToPixel(25f, getApplicationContext());
                 lp.setMargins(dp25, dp25, dp25, dp25);
                 lp.gravity = Gravity.BOTTOM | Gravity.END;
                 frmFabLayout.setLayoutParams(lp);
@@ -690,10 +709,10 @@ public class CustomerRegistrationActivity extends AppCompatActivity implements V
 
                 CoordinatorLayout.LayoutParams lp = new CoordinatorLayout.LayoutParams(
                         frmFabLayout.getWidth(), frmFabLayout.getHeight());
-                int dp25= (int) CommonMethod.convertDpToPixel(25f,getApplicationContext());
+                int dp25 = (int) CommonMethod.convertDpToPixel(25f, getApplicationContext());
                 lp.setMargins(dp25, dp25, dp25, dp25);
                 lp.setAnchorId(R.id.app_bar);
-                lp.anchorGravity=Gravity.BOTTOM|Gravity.END;
+                lp.anchorGravity = Gravity.BOTTOM | Gravity.END;
                 frmFabLayout.setLayoutParams(lp);
 
             }
@@ -706,7 +725,7 @@ public class CustomerRegistrationActivity extends AppCompatActivity implements V
         this.listener = listener;
     }
 
-    public void setListener(CommonMethod.NextButtonClickedVehicleListener listener){
-        this.vehicleListener=listener;
+    public void setListener(CommonMethod.NextButtonClickedVehicleListener listener) {
+        this.vehicleListener = listener;
     }
 }

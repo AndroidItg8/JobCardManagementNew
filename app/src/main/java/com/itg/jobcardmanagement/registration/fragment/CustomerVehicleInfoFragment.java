@@ -98,7 +98,7 @@ public class CustomerVehicleInfoFragment extends BaseFragment implements View.On
 
     private void setModelToWidget() {
         if (model != null) {
-            Vehicle vehicle = model.getVehicle();
+            Vehicle vehicle = model.getSingleVehicle();
             if (vehicle != null) {
                 edtSeries.setText(checkNull(vehicle.getSeries()));
                 edtColorCode.setText(checkNull(vehicle.getColor()));
@@ -118,7 +118,8 @@ public class CustomerVehicleInfoFragment extends BaseFragment implements View.On
             vehicle.setColor(edtColorCode.getText().toString());
             vehicle.setDealerCode(edtSellingDealer.getText().toString());
             if(model!=null){
-                vehicle.setPkid(model.getVehicle().getPkid());
+                if(model.getSingleVehicle()!=null)
+                    vehicle.setPkid(model.getSingleVehicle().getPkid());
             }
             ((CustomerRegistrationActivity) getActivity()).sendVehicleDataToActivity(vehicle);
 

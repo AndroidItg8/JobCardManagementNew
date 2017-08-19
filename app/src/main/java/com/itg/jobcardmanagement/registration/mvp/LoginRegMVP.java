@@ -9,6 +9,8 @@ import com.itg.jobcardmanagement.registration.model.RegistrationModel;
 import com.itg.jobcardmanagement.registration.model.User;
 import com.itg.jobcardmanagement.registration.model.Vehicle;
 
+import org.json.JSONObject;
+
 import java.util.HashMap;
 
 /**
@@ -161,6 +163,9 @@ public class LoginRegMVP {
         void onVehicleStorageFail();
 
         void onVehicleStorageSuccess(String carid);
+
+        void showProfileDownloadProgress();
+        void hideProfileDownloadProgress();
     }
 
     public interface RegistrationListener {
@@ -185,6 +190,10 @@ public class LoginRegMVP {
         void onVehicleStoreFail();
 
         void onVehicleStoredSuccess(String carid);
+
+        void onProfileDownloadComplete(JSONObject response);
+
+        void onProfileDownloadFailed(Object response);
     }
 
 
@@ -194,6 +203,8 @@ public class LoginRegMVP {
         void onUserProfileAvail(User user);
 
         void onVehicleDetailsAvailable(Vehicle vehicle);
+
+        void checkUsersDetails();
     }
 
     public interface RegistrationModule extends BaseModule {
@@ -205,5 +216,9 @@ public class LoginRegMVP {
         void onProfileSendToServer(HashMap<String, String> hashParam);
 
         void onVehicleSendToServer(HashMap<String,String> hashParam);
+
+        void downloadProfileDetails();
+
+
     }
 }

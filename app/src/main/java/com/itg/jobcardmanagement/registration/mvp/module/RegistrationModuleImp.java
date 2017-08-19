@@ -13,6 +13,7 @@ import com.itg.jobcardmanagement.common.CommonMethod;
 import com.itg.jobcardmanagement.common.Logger;
 import com.itg.jobcardmanagement.common.MyApplication;
 import com.itg.jobcardmanagement.common.NetworkCall;
+import com.itg.jobcardmanagement.common.NetworkListener;
 import com.itg.jobcardmanagement.common.Prefs;
 import com.itg.jobcardmanagement.registration.model.RegistrationModel;
 import com.itg.jobcardmanagement.registration.mvp.LoginRegMVP;
@@ -301,5 +302,68 @@ public class RegistrationModuleImp implements LoginRegMVP.RegistrationModule {
 
         MyApplication.getInstance().addToRequestQueue(request, VEHICLE_SAVE);
 
+    }
+
+
+    @Override
+    public void downloadProfileDetails() {
+        StringRequest request = new StringRequest(Request.Method.GET, NetworkCall.getInstance().userAllDetails(), new Response.Listener<String>() {
+            @Override
+            public void onResponse(String res) {
+                if (res != null) {
+                    try {
+                        Logger.i(res);
+                        JSONObject response = new JSONObject(res);
+                        if(response.has("User")){
+                            listener.onProfileDownloadComplete(response);
+                        }else {
+                            listener.onProfileDownloadFailed(response);
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        listener.onProfileDownloadFailed(e);
+                    }
+
+                }
+            }
+        },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        error.printStackTrace();
+                        NetworkResponse response = error.networkResponse;
+                        if (error instanceof ServerError && response != null) {
+                            try {
+                                String res = new String(response.data,
+                                        HttpHeaderParser.parseCharset(response.headers, "utf-8"));
+                                Logger.i(res);
+                                // Now you can use any deserializer to make sense of data
+                                JSONObject obj = new JSONObject(res);
+                                Logger.i(obj.toString());
+                                listener.onNetworkFailed("error");
+                            } catch (UnsupportedEncodingException | JSONException e1) {
+                                // Couldn't properly decode data to string
+                                e1.printStackTrace();
+                                listener.onNetworkFailed("error");
+                            }
+                        }
+                    }
+                }) {
+
+//
+//            @Override
+//            public String getBodyContentType() {
+//                return "application/x-www-form-urlencoded; charset=UTF-8";
+//            }
+//
+//            @Override
+//            public Map<String, String> getHeaders() throws AuthFailureError {
+//                Map<String, String> paramsHeader = new HashMap<String, String>();
+//                paramsHeader.put("Authorization", "bearer " + Prefs.getString(CommonMethod.TOKEN,""));
+//                return paramsHeader;
+//            }
+        };
+
+        MyApplication.getInstance().addToRequestQueue(request, NetworkListener.COMPLETE_DETAIL);
     }
 }

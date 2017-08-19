@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 
 import com.itg.jobcardmanagement.R;
 import com.itg.jobcardmanagement.home.adapter.VehicleServiceAdapter;
-import com.itg.jobcardmanagement.service.ServiceDetailsActivity;
+import com.itg.jobcardmanagement.servicing.ServiceDetailsActivity;
 import com.itg.jobcardmanagement.widget.SimpleDividerItemDecoration;
 
 import butterknife.BindView;

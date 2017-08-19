@@ -12,4 +12,5 @@ public interface NetworkListener {
     String VEHICLE_CHECK ="/api/CustomerApp/CarAvailability";
     String USER_PROFILE="/api/CustomerApp/UserProfile";
     String VEHICLE_SAVE="/api/CustomerApp/VehicleSave";
+    String COMPLETE_DETAIL="/api/CustomerApp/DashboardDetails";
 }
