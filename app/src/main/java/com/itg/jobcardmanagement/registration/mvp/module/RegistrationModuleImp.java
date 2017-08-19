@@ -16,14 +16,28 @@ import com.itg.jobcardmanagement.common.NetworkCall;
 import com.itg.jobcardmanagement.common.NetworkListener;
 import com.itg.jobcardmanagement.common.Prefs;
 import com.itg.jobcardmanagement.registration.model.RegistrationModel;
+import com.itg.jobcardmanagement.registration.model.User;
+import com.itg.jobcardmanagement.registration.model.UserVehicleDetailModel;
+import com.itg.jobcardmanagement.registration.model.Vehicle;
 import com.itg.jobcardmanagement.registration.mvp.LoginRegMVP;
+import com.orm.SugarRecord;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.annotations.NonNull;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 import static com.itg.jobcardmanagement.common.CommonMethod.FLAG;
 import static com.itg.jobcardmanagement.common.NetworkListener.USER_PROFILE;
@@ -35,6 +49,8 @@ public class RegistrationModuleImp implements LoginRegMVP.RegistrationModule {
 
 
     private static final String VEHICLE_CHECK = RegistrationModuleImp.class.getName();
+    private static final int VEHICLE_AVAIL = 1;
+    private static final int VEHICLE_MISSED = 2;
     private final LoginRegMVP.RegistrationListener listener;
 
     public RegistrationModuleImp(LoginRegMVP.RegistrationListener listener) {
@@ -356,14 +372,74 @@ public class RegistrationModuleImp implements LoginRegMVP.RegistrationModule {
 //                return "application/x-www-form-urlencoded; charset=UTF-8";
 //            }
 //
-//            @Override
-//            public Map<String, String> getHeaders() throws AuthFailureError {
-//                Map<String, String> paramsHeader = new HashMap<String, String>();
-//                paramsHeader.put("Authorization", "bearer " + Prefs.getString(CommonMethod.TOKEN,""));
-//                return paramsHeader;
-//            }
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> paramsHeader = new HashMap<String, String>();
+                paramsHeader.put("Authorization", "bearer " + Prefs.getString(CommonMethod.TOKEN,""));
+                return paramsHeader;
+            }
         };
 
         MyApplication.getInstance().addToRequestQueue(request, NetworkListener.COMPLETE_DETAIL);
     }
+
+    @Override
+    public void storeProfileVehicleAndSevicingInfo(final UserVehicleDetailModel model) {
+
+
+
+
+        Observable.create(new ObservableOnSubscribe<Object>() {
+            @Override
+            public void subscribe(@NonNull ObservableEmitter<Object> e) throws Exception {
+
+                List<User> users= SugarRecord.listAll(User.class);
+                if(users!=null){
+                    if(users.size()>0){
+                        SugarRecord.deleteAll(User.class);
+                    }
+                }
+                model.getUser().save();
+
+                List<Vehicle> vehicles=model.getVehicle();
+                if(vehicles!=null && vehicles.size()>0){
+                    SugarRecord.deleteAll(Vehicle.class);
+                    SugarRecord.saveInTx(vehicles);
+                    e.onNext(VEHICLE_AVAIL);
+                }else {
+                    e.onNext(VEHICLE_MISSED);
+                    listener.onNoVehicleRegisteredWithUser();
+                }
+
+            }
+        }).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<Object>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(Object o) {
+                        int type= (int) o;
+                        if(type==VEHICLE_AVAIL)
+                            listener.onVehicleAlreadyRegisteredWithUser();
+                        else if(type==VEHICLE_MISSED)
+                            listener.onNoVehicleRegisteredWithUser();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        e.printStackTrace();
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+
+    }
+
 }

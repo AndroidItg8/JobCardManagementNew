@@ -7,6 +7,7 @@ import com.itg.jobcardmanagement.common.common_interface.BasePresenter;
 import com.itg.jobcardmanagement.common.common_interface.BaseView;
 import com.itg.jobcardmanagement.registration.model.RegistrationModel;
 import com.itg.jobcardmanagement.registration.model.User;
+import com.itg.jobcardmanagement.registration.model.UserVehicleDetailModel;
 import com.itg.jobcardmanagement.registration.model.Vehicle;
 
 import org.json.JSONObject;
@@ -14,7 +15,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 
 /**
- * Created by itg_Android on 8/5/2017.
+ * Created by me  itg_Android on 8/5/2017.
  */
 
 public class LoginRegMVP {
@@ -194,6 +195,10 @@ public class LoginRegMVP {
         void onProfileDownloadComplete(JSONObject response);
 
         void onProfileDownloadFailed(Object response);
+
+        void onNoVehicleRegisteredWithUser();
+
+        void onVehicleAlreadyRegisteredWithUser();
     }
 
 
@@ -220,5 +225,6 @@ public class LoginRegMVP {
         void downloadProfileDetails();
 
 
+        void storeProfileVehicleAndSevicingInfo(UserVehicleDetailModel model);
     }
 }

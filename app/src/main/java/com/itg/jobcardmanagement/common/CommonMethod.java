@@ -5,7 +5,7 @@ import android.content.res.Resources;
 import android.util.DisplayMetrics;
 
 /**
- * Created by Android itg 8 on 8/7/2017.
+ * Created by me  Android itg 8 on 8/7/2017.
  */
 
 public class CommonMethod {

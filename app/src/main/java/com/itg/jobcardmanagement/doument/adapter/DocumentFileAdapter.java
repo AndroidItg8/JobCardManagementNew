@@ -17,9 +17,6 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * Created by Android itg 8 on 8/8/2017.
- */
 
 public class DocumentFileAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 

@@ -5,7 +5,7 @@ import com.itg.jobcardmanagement.common.CommonMethod;
 import com.itg.jobcardmanagement.common.Prefs;
 
 /**
- * Created by itg_Android on 8/5/2017.
+ * Created by me  itg_Android on 8/5/2017.
  */
 
 public class LoginPresenterImp extends BaseWeakPresenter implements LoginRegMVP.LoginListener, LoginRegMVP.LoginPresenter {

@@ -1,7 +1,7 @@
 package com.itg.jobcardmanagement.registration.mvp;
 
 /**
- * Created by itg_Android on 8/8/2017.
+ * Created by me  itg_Android on 8/8/2017.
  */
 
 public interface RegMVP {

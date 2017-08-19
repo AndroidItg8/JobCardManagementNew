@@ -21,7 +21,7 @@ import java.util.Map;
 import static com.itg.jobcardmanagement.registration.mvp.LoginPresenterImp.EMAIL;
 
 /**
- * Created by itg_Android on 8/5/2017.
+ * Created by me  itg_Android on 8/5/2017.
  */
 
 public class LoginModuleImp implements LoginRegMVP.LoginModule {

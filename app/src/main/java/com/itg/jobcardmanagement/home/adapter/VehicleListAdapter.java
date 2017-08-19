@@ -11,7 +11,7 @@ import com.itg.jobcardmanagement.R;
 import butterknife.ButterKnife;
 
 /**
- * Created by Android itg 8 on 8/10/2017.
+ * Created by me  Android itg 8 on 8/10/2017.
  */
 
 public class VehicleListAdapter extends RecyclerView.Adapter<VehicleListAdapter.VehicleViewHolder> {

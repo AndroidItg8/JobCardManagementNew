@@ -7,7 +7,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import java.util.ArrayList;
 
 /**
- * Created by Android itg 8 on 8/7/2017.
+ * Created by me  Android itg 8 on 8/7/2017.
  */
 
 public class HomeViewPagerAdapter extends FragmentPagerAdapter {

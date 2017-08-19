@@ -14,7 +14,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * Created by Android itg 8 on 8/7/2017.
+ * Created by me  Android itg 8 on 8/7/2017.
  */
 
 public class VehicleServiceAdapter extends RecyclerView.Adapter<VehicleServiceAdapter.ServiceViewHolder> {

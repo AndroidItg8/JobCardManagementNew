@@ -1,17 +1,30 @@
 package com.itg.jobcardmanagement.common;
 
-import android.app.Application;
 import android.text.TextUtils;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.Volley;
+import com.itg.jobcardmanagement.registration.model.User;
+import com.itg.jobcardmanagement.registration.model.UserVehicleDetailModel;
+import com.itg.jobcardmanagement.registration.model.Vehicle;
+import com.orm.SugarRecord;
+
+import java.util.List;
+
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.Observer;
+import io.reactivex.annotations.NonNull;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 import static com.android.volley.VolleyLog.TAG;
 
 /**
- * Created by itg_Android on 8/4/2017.
+ * Created by me  itg_Android on 8/4/2017.
  */
 
 public class MyApplication extends com.orm.SugarApp {

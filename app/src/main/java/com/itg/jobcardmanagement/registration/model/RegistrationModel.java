@@ -6,7 +6,7 @@ import android.os.Parcelable;
 import java.io.File;
 
 /**
- * Created by Android itg 8 on 8/7/2017.
+ * Created by me  Android itg 8 on 8/7/2017.
  */
 
 public class RegistrationModel  implements Parcelable {

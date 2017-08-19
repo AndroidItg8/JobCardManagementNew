@@ -5,7 +5,7 @@ import android.text.TextUtils;
 import com.itg.jobcardmanagement.common.BaseWeakPresenter;
 
 /**
- * Created by itg_Android on 8/8/2017.
+ * Created by me  itg_Android on 8/8/2017.
  */
 
 public class RegPresenterImp extends BaseWeakPresenter implements RegMVP.RegPresenter, RegMVP.RegListener {

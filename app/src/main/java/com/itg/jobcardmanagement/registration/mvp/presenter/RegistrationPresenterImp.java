@@ -2,9 +2,13 @@ package com.itg.jobcardmanagement.registration.mvp.presenter;
 
 import android.text.TextUtils;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.itg.jobcardmanagement.common.BaseWeakPresenter;
+import com.itg.jobcardmanagement.common.MyApplication;
 import com.itg.jobcardmanagement.registration.model.RegistrationModel;
 import com.itg.jobcardmanagement.registration.model.User;
+import com.itg.jobcardmanagement.registration.model.UserVehicleDetailModel;
 import com.itg.jobcardmanagement.registration.model.Vehicle;
 import com.itg.jobcardmanagement.registration.mvp.LoginRegMVP;
 import com.itg.jobcardmanagement.registration.mvp.module.RegistrationModuleImp;
@@ -14,7 +18,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 
 /**
- * Created by Android itg 8 on 8/7/2017.
+ * Created by me  Android itg 8 on 8/7/2017.
  */
 
 public class RegistrationPresenterImp extends BaseWeakPresenter implements LoginRegMVP.RegistrationPresenter, LoginRegMVP.RegistrationListener {
@@ -42,7 +46,6 @@ public class RegistrationPresenterImp extends BaseWeakPresenter implements Login
 
     @Override
     public void onProgressHide() {
-
 
     }
 
@@ -244,7 +247,10 @@ public class RegistrationPresenterImp extends BaseWeakPresenter implements Login
     @Override
     public void onProfileDownloadComplete(JSONObject response) {
         if(response!=null){
-
+            UserVehicleDetailModel model=new Gson().fromJson(response.toString(),new TypeToken<UserVehicleDetailModel>(){}.getType());
+            if(model!=null){
+                module.storeProfileVehicleAndSevicingInfo(model);
+            }
         }
 //        module.startStoringToDb(response);
     }
@@ -252,5 +258,20 @@ public class RegistrationPresenterImp extends BaseWeakPresenter implements Login
     @Override
     public void onProfileDownloadFailed(Object response) {
 
+    }
+
+    @Override
+    public void onNoVehicleRegisteredWithUser() {
+        if(hasView()){
+            getRegView().hideProfileDownloadProgress();
+        }
+    }
+
+    @Override
+    public void onVehicleAlreadyRegisteredWithUser() {
+        if(hasView()){
+            getRegView().hideProfileDownloadProgress();
+            getRegView().finishActivityRegComplete();
+        }
     }
 }

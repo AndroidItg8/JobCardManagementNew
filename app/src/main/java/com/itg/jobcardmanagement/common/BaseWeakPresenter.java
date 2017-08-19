@@ -2,9 +2,7 @@ package com.itg.jobcardmanagement.common;
 
 import java.lang.ref.WeakReference;
 
-/**
- * Created by swapnilmeshram on 28/07/17.
- */
+
 
 public class BaseWeakPresenter<T> {
     private WeakReference<T> weakReference;
