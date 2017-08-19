@@ -26,7 +26,7 @@ import static com.android.volley.Request.Method.POST;
  * Created by me  itg_Android on 8/9/2017.
  */
 
-public class PasswordModuleImp implements LoginRegMVP.PasswordModule {
+public class  PasswordModuleImp implements LoginRegMVP.PasswordModule {
     private static final String PASS = PasswordModuleImp.class.getSimpleName();
 
     @Override

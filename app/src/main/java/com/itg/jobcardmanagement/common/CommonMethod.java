@@ -8,7 +8,7 @@ import android.util.DisplayMetrics;
  * Created by me  Android itg 8 on 8/7/2017.
  */
 
-public class CommonMethod {
+public class  CommonMethod {
     public static final String FROMADD = "FROMADD";
     public static final String FROMPROFILE = "FROMPROFILE";
     public static final String FROMQR = "FROMQR";

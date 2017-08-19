@@ -7,7 +7,7 @@ import com.itg.jobcardmanagement.registration.mvp.LoginRegMVP;
 import com.itg.jobcardmanagement.registration.mvp.module.PasswordModuleImp;
 
 
-public class PasswordPresenterImp extends BaseWeakPresenter implements LoginRegMVP.PasswordPresenter, LoginRegMVP.PasswordListener {
+public class  PasswordPresenterImp extends BaseWeakPresenter implements LoginRegMVP.PasswordPresenter, LoginRegMVP.PasswordListener {
 
     private final PasswordModuleImp model;
 

@@ -13,7 +13,7 @@ import com.itg.jobcardmanagement.registration.model.UserVehicleDetailModel;
  * Created by me  Android itg 8 on 8/5/2017.
  */
 
-public class RegistrationViewPagerAdapter extends FragmentPagerAdapter {
+public class  RegistrationViewPagerAdapter extends FragmentPagerAdapter {
 
 
     private UserVehicleDetailModel model;

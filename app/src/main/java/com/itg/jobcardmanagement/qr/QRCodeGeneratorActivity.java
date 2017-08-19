@@ -23,7 +23,7 @@ import com.itg.jobcardmanagement.common.Prefs;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class QRCodeGeneratorActivity extends AppCompatActivity {
+public class  QRCodeGeneratorActivity extends AppCompatActivity {
 
     public final static int QRcodeWidth = 500;
     @BindView(R.id.toolbar)

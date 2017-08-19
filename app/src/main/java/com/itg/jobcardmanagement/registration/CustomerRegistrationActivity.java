@@ -66,7 +66,7 @@ import butterknife.ButterKnife;
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
 
-public class CustomerRegistrationActivity extends AppCompatActivity implements View.OnClickListener, LoginRegMVP.RegistrationView, EasyPermissions.PermissionCallbacks {
+public class  CustomerRegistrationActivity extends AppCompatActivity implements View.OnClickListener, LoginRegMVP.RegistrationView, EasyPermissions.PermissionCallbacks {
 
 
     private static final String TAG = CustomerRegistrationActivity.class.getSimpleName();

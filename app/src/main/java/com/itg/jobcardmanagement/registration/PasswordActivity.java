@@ -22,7 +22,7 @@ import butterknife.ButterKnife;
 
 import static com.itg.jobcardmanagement.registration.activity.LoginActivity.REG;
 
-public class PasswordActivity extends AppCompatActivity implements RegistrationFragment.OnRegistrationListner {
+public class  PasswordActivity extends AppCompatActivity implements RegistrationFragment.OnRegistrationListner {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;

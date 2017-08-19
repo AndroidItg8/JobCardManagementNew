@@ -13,7 +13,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 
 @SuppressLint("NewApi")
-public class ParallaxViewPager extends ViewPager {
+public class  ParallaxViewPager extends ViewPager {
 
     public static final int FIT_WIDTH = 0;
     public static final int FIT_HEIGHT = 1;

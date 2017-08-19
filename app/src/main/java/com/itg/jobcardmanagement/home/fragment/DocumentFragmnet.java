@@ -16,6 +16,7 @@ import com.itg.jobcardmanagement.R;
  * Use the {@link DocumentFragmnet#newInstance} factory method to
  * create an instance of this fragment.
  */
+
 public class DocumentFragmnet extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

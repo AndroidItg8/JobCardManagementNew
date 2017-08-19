@@ -9,7 +9,7 @@ import com.itg.jobcardmanagement.registration.model.RegistrationModel;
  */
 
 
-public interface RegistrationPresenter extends BasePresenter {
+public interface  RegistrationPresenter extends BasePresenter {
     void onsendRegistrationInfoToServer(RegistrationModel model);
 }
 

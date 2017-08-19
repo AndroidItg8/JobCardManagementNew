@@ -27,7 +27,7 @@ import static com.android.volley.VolleyLog.TAG;
  * Created by me  itg_Android on 8/4/2017.
  */
 
-public class MyApplication extends com.orm.SugarApp {
+public class  MyApplication extends com.orm.SugarApp {
 
     private static final String MY_PREF_NAME = "JobCardPrefClass";
     private static MyApplication mInstance;

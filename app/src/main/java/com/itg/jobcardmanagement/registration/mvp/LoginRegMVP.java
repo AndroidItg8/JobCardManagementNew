@@ -18,7 +18,7 @@ import java.util.HashMap;
  * Created by me  itg_Android on 8/5/2017.
  */
 
-public class LoginRegMVP {
+public class  LoginRegMVP {
 
     public interface LoginView {
         void onEmailEntered(String email);

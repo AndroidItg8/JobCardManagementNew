@@ -48,6 +48,7 @@ import butterknife.Unbinder;
  * Use the {@link DocumentDailogueFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
+
 public class DocumentDailogueFragment extends DialogFragment implements View.OnClickListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

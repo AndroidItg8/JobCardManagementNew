@@ -8,7 +8,7 @@ import com.itg.jobcardmanagement.common.Prefs;
  * Created by me  itg_Android on 8/5/2017.
  */
 
-public class LoginPresenterImp extends BaseWeakPresenter implements LoginRegMVP.LoginListener, LoginRegMVP.LoginPresenter {
+public class  LoginPresenterImp extends BaseWeakPresenter implements LoginRegMVP.LoginListener, LoginRegMVP.LoginPresenter {
 
 
     public static final int EMAIL = 1;

@@ -8,7 +8,7 @@ import com.itg.jobcardmanagement.common.BaseWeakPresenter;
  * Created by me  itg_Android on 8/8/2017.
  */
 
-public class RegPresenterImp extends BaseWeakPresenter implements RegMVP.RegPresenter, RegMVP.RegListener {
+public class  RegPresenterImp extends BaseWeakPresenter implements RegMVP.RegPresenter, RegMVP.RegListener {
 
 
     private static final String REG_ALFA = "[a-zA-Z]+";

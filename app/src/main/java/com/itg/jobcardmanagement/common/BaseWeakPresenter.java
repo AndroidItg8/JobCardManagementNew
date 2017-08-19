@@ -4,7 +4,7 @@ import java.lang.ref.WeakReference;
 
 
 
-public class BaseWeakPresenter<T> {
+public class  BaseWeakPresenter<T> {
     private WeakReference<T> weakReference;
 
     public BaseWeakPresenter(T t) {

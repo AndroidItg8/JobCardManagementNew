@@ -416,7 +416,7 @@ public class RegistrationModuleImp implements LoginRegMVP.RegistrationModule {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<Object>() {
                     @Override
-                    public void onSubscribe(Disposable d) {
+                    public void onSubscribe(Dis posable d) {
 
                     }
 

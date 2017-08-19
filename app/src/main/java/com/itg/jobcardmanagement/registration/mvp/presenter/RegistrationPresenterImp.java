@@ -21,7 +21,7 @@ import java.util.HashMap;
  * Created by me  Android itg 8 on 8/7/2017.
  */
 
-public class RegistrationPresenterImp extends BaseWeakPresenter implements LoginRegMVP.RegistrationPresenter, LoginRegMVP.RegistrationListener {
+public class  RegistrationPresenterImp extends BaseWeakPresenter implements LoginRegMVP.RegistrationPresenter, LoginRegMVP.RegistrationListener {
 
     private static final int FINISH_REGISTRATION = 4;
     private static final int REG_CHECK = 1;

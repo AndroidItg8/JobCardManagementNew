@@ -14,7 +14,7 @@ import com.itg.jobcardmanagement.R;
  * Created by me  Android itg 8 on 7/29/2017.
  */
 
-public class SimpleDividerItemDecoration extends RecyclerView.ItemDecoration {
+public class  SimpleDividerItemDecoration extends RecyclerView.ItemDecoration {
     private Drawable mDivider;
 
     public SimpleDividerItemDecoration(Context context) {

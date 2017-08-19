@@ -9,7 +9,7 @@ import android.view.View;
 
 import com.itg.jobcardmanagement.R;
 
-public class MainSettingActivity extends AppCompatActivity {
+public class  MainSettingActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

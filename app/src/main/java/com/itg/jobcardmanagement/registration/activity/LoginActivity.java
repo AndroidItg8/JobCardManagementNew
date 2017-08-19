@@ -47,7 +47,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class LoginActivity extends AppCompatActivity implements LoginRegMVP.LoginView, GoogleApiClient.OnConnectionFailedListener {
+public class  LoginActivity extends AppCompatActivity implements LoginRegMVP.LoginView, GoogleApiClient.OnConnectionFailedListener {
 
     public static final int REG = 1;
     public static final int PASS = 2;

@@ -27,7 +27,7 @@ import java.util.Map;
  * Created by me  swapnilmeshram on 09/08/17.
  */
 
-public class RegModuleImp implements RegMVP.RegModule {
+public class  RegModuleImp implements RegMVP.RegModule {
 
     private static final String FLAG = "flag";
     private static final String MESSAGE = "Message";

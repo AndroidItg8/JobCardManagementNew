@@ -15,7 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:replace="android:allowBackup,android:icon">
+        tools:replace="android:allowBackup">
         <activity android:name=".home.MainActivity">
 
             <!-- <intent-filter> -->
@@ -62,10 +62,10 @@
             android:name=".profile.ProfileActivity"
             android:label="@string/title_activity_profile"
             android:theme="@style/AppTheme.NoActionBar" />
-        <!--<activity-->
-            <!--android:name=".servicing.ServiceDetailsActivity"-->
-            <!--android:label="@string/title_activity_service_details"-->
-            <!--android:theme="@style/AppTheme.NoActionBar" />-->
+        <activity
+            android:name=".servicing.ServiceDetailsActivity"
+            android:label="@string/title_activity_service_details"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".home.HomeActivity"
             android:label="@string/title_activity_home"
@@ -73,15 +73,28 @@
         <activity
             android:name=".setting.SettingActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <!--<activity-->
-            <!--android:name=".qr.QRCodeScanActivity"-->
-            <!--android:label="@string/title_activity_qrcode_scan"-->
-            <!--android:theme="@style/AppTheme.NoActionBar" />-->
+        <activity
+            android:name=".qr.QRCodeScanActivity"
+            android:label="@string/title_activity_qrcode_scan"
+            android:theme="@style/AppTheme.NoActionBar" />
 
-        <!--<service-->
-            <!--android:name=".common.service.DownloadService"-->
-            <!--android:enabled="true"-->
-            <!--android:exported="true"></service>-->
+        <service
+            android:name=".common.service.DownloadService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <meta-data
+            android:name="DATABASE"
+            android:value="jobcard.db" />
+        <meta-data
+            android:name="VERSION"
+            android:value="1" />
+        <meta-data
+            android:name="QUERY_LOG"
+            android:value="true" />
+        <meta-data
+            android:name="DOMAIN_PACKAGE_NAME"
+            android:value="com.itg" />
     </application>
 
 </manifest>

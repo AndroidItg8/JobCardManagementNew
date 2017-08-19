@@ -24,7 +24,7 @@ import static com.itg.jobcardmanagement.registration.mvp.LoginPresenterImp.EMAIL
  * Created by me  itg_Android on 8/5/2017.
  */
 
-public class LoginModuleImp implements LoginRegMVP.LoginModule {
+public class  LoginModuleImp implements LoginRegMVP.LoginModule {
 
     private static final String DUMMY_USERNAME = "9890410668";
     private static final String PROFILE_PIC = "Profiepic";

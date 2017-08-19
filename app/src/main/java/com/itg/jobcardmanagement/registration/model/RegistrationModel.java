@@ -9,7 +9,7 @@ import java.io.File;
  * Created by me  Android itg 8 on 8/7/2017.
  */
 
-public class RegistrationModel  implements Parcelable {
+public class  RegistrationModel  implements Parcelable {
     private int id;
     private String registrationNumber;
     private String chesisNumber;
